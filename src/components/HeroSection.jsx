@@ -20,7 +20,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative w-full overflow-hidden aspect-[9/16] sm:aspect-auto sm:h-[min(90vw,720px)] sm:min-h-[320px]"
+      className="relative w-full overflow-hidden aspect-[3/4] sm:aspect-auto sm:h-[min(90vw,720px)] sm:min-h-[320px]"
     >
       {/* ── Full-bleed background slides (images have built-in fade) ── */}
       {slides.map((slide, i) => (
