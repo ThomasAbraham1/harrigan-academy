@@ -8,7 +8,7 @@ const features = [
 export default function FeaturesBar() {
   return (
     <section
-      className="relative w-full flex items-center"
+      className="relative w-full flex items-center min-h-[180px] md:min-h-[130px]"
       style={{
         marginTop: '-42px',
         zIndex: 10,
@@ -16,7 +16,6 @@ export default function FeaturesBar() {
         backgroundRepeat:   'repeat-x',
         backgroundSize:     'auto 100%',
         backgroundPosition: 'center',
-        minHeight:          '130px',
       }}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-8 w-full">
@@ -25,7 +24,7 @@ export default function FeaturesBar() {
           style={{ transform: 'translateY(-8px)' }}
         >
           {features.map((feature, index) => (
-            <div key={index} className="flex items-center gap-2 sm:gap-3 group">
+            <div key={index} className="flex items-center gap-2 justify-self-center sm:justify-self-start sm:gap-3 group">
               {/* Icon — smaller on mobile */}
               <img
                 src={feature.icon}

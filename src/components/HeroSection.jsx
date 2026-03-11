@@ -20,13 +20,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative w-full overflow-hidden"
-      style={{
-        /* Mobile: shorter hero so content fits without scroll */
-        /* Tablet+: taller, up to 720px cap                    */
-        height: 'min(90vw, 720px)',
-        minHeight: '320px',
-      }}
+      className="relative w-full overflow-hidden aspect-[9/16] sm:aspect-auto sm:h-[min(90vw,720px)] sm:min-h-[320px]"
     >
       {/* ── Full-bleed background slides (images have built-in fade) ── */}
       {slides.map((slide, i) => (
@@ -47,24 +41,24 @@ export default function HeroSection() {
 
       {/* ── Text overlay ── */}
       <div className="relative z-10 h-full flex items-center">
-        <div className="w-full px-5 sm:px-10 lg:px-16">
+        <div className="w-full px-4 sm:px-10 lg:px-16 pb-8 sm:pb-0">
           {/* Constrain text to left half on md+ so it sits over the white-fade area of the image */}
-          <div className="w-full sm:w-3/4 md:w-1/2 flex flex-col gap-3 sm:gap-5">
+          <div className="w-full sm:w-3/4 md:w-1/2 flex flex-col gap-1.5 sm:gap-5">
 
             <h1
-              className="text-2xl sm:text-4xl md:text-5xl font-black leading-tight"
+              className="text-lg sm:text-4xl md:text-5xl font-black leading-tight"
               style={{ color: '#7B2D8B' }}
             >
               Fun Online Classes to improve your English!
             </h1>
 
-            <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed font-medium">
+            <p className="text-gray-800 text-xs sm:text-base md:text-lg leading-relaxed font-medium hidden sm:block">
               With experienced international teachers who care about your progress.
             </p>
 
             <a
               href="#contact"
-              className="self-start inline-flex items-center px-6 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-bold text-white text-sm sm:text-base transition-all duration-300 hover:scale-105 hover:brightness-110 mt-1"
+              className="self-start inline-flex items-center px-4 sm:px-8 py-2 sm:py-3.5 rounded-full font-bold text-white text-xs sm:text-base transition-all duration-300 hover:scale-105 hover:brightness-110 sm:mt-1"
               style={{ backgroundColor: '#7B2D8B' }}
             >
               Start Learning Today
