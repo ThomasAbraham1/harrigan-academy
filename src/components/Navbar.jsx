@@ -1,15 +1,18 @@
 import { useState, useEffect } from 'react'
-
-const navLinks = [
-  { label: 'Why Us',            href: '#why-us' },
-  { label: 'About Our Program', href: '#about' },
-  { label: 'Our Teachers',      href: '#teachers' },
-  { label: 'FAQ',               href: '#faq' },
-]
+import { useI18n } from '../i18n/index.jsx'
 
 export default function Navbar() {
+  const { t, locale, setLocale, locales } = useI18n()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled]   = useState(false)
+  const [langOpen, setLangOpen]   = useState(false)
+
+  const navLinks = [
+    { label: t.nav.whyUs,    href: '#why-us' },
+    { label: t.nav.about,    href: '#about' },
+    { label: t.nav.teachers, href: '#teachers' },
+    { label: t.nav.faq,      href: '#faq' },
+  ]
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10)
@@ -22,48 +25,67 @@ export default function Navbar() {
       className={`sticky top-0 z-50 transition-shadow duration-300 ${scrolled ? 'shadow-xl shadow-purple-900/30' : ''}`}
       style={{ backgroundColor: '#7B2D8B' }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto w-full px-6 sm:px-12 lg:px-20">
         <div className="flex items-center justify-between h-16 sm:h-20">
 
-          {/* Logo — plain text */}
+          {/* Logo */}
           <a href="#" className="flex-shrink-0">
-            <span className="text-white font-extrabold text-base sm:text-xl tracking-tight">
-              Harrigan Academy
+            <span className="text-white text-brand-logo font-brand-logo">
+              {t.nav.logo}
             </span>
           </a>
 
-          {/* Desktop Navigation — hidden below lg */}
+          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) => (
-              <a key={link.label} href={link.href} className="nav-link text-sm xl:text-base">
+              <a key={link.label} href={link.href} className="nav-link text-brand-nav-link font-brand-nav-link text-white hover:text-brand-mint-dark transition-colors">
                 {link.label}
               </a>
             ))}
           </nav>
 
-          {/* Right: Contact Us + Globe — shown on lg+ */}
+          {/* Right: Contact Us + Language switcher */}
           <div className="hidden lg:flex items-center gap-3 xl:gap-4">
-            <a href="#contact" className="contact-btn text-sm">
-              Contact Us
+            <a href="#contact" className="contact-btn text-brand-button font-brand-button px-5 py-2.5 bg-white text-brand-purple rounded-full hover:bg-gray-100 transition-colors">
+              {t.nav.contact}
             </a>
-            <button className="text-white/80 hover:text-white transition-colors" aria-label="Language switcher">
-              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-              </svg>
-            </button>
+
+            {/* Language switcher dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setLangOpen(!langOpen)}
+                className="flex items-center gap-1.5 text-white/80 hover:text-white transition-colors px-2 py-1 rounded-lg hover:bg-white/10"
+                aria-label={t.nav.langAriaLabel}
+              >
+                <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                </svg>
+                <span className="text-xs font-semibold">{locales[locale].label}</span>
+              </button>
+
+              {langOpen && (
+                <div className="absolute right-0 top-full mt-1 bg-white rounded-xl shadow-lg overflow-hidden z-50 min-w-[120px]">
+                  {Object.entries(locales).map(([code, meta]) => (
+                    <button
+                      key={code}
+                      onClick={() => { setLocale(code); setLangOpen(false) }}
+                      className={`w-full text-left px-4 py-2.5 text-sm flex items-center gap-2 hover:bg-brand-purple/10 transition-colors ${locale === code ? 'font-bold text-brand-purple' : 'text-gray-700'}`}
+                    >
+                      <span className="text-xs font-mono font-bold w-5">{meta.label}</span>
+                      <span>{meta.nativeLabel}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
-          {/* Tablet: show Contact Us only (no nav links) */}
+          {/* Tablet: Contact Us + hamburger */}
           <div className="hidden sm:flex lg:hidden items-center gap-3">
-            <a href="#contact" className="contact-btn text-xs px-4 py-2">
-              Contact Us
+            <a href="#contact" className="contact-btn text-brand-button font-brand-button px-4 py-2 bg-white text-brand-purple rounded-full hover:bg-gray-100 transition-colors">
+              {t.nav.contact}
             </a>
-            {/* Hamburger for nav links */}
-            <button
-              className="flex flex-col gap-1.5 p-1.5"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Toggle menu"
-            >
+            <button className="flex flex-col gap-1.5 p-1.5" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
               <span className={`hamburger-line ${mobileOpen ? 'rotate-45 translate-y-2 origin-center' : ''}`} />
               <span className={`hamburger-line ${mobileOpen ? 'opacity-0 scale-x-0' : ''}`} />
               <span className={`hamburger-line ${mobileOpen ? '-rotate-45 -translate-y-2 origin-center' : ''}`} />
@@ -71,11 +93,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile: hamburger only */}
-          <button
-            className="sm:hidden flex flex-col gap-1.5 p-2"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
+          <button className="sm:hidden flex flex-col gap-1.5 p-2" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
             <span className={`hamburger-line ${mobileOpen ? 'rotate-45 translate-y-2 origin-center' : ''}`} />
             <span className={`hamburger-line ${mobileOpen ? 'opacity-0 scale-x-0' : ''}`} />
             <span className={`hamburger-line ${mobileOpen ? '-rotate-45 -translate-y-2 origin-center' : ''}`} />
@@ -83,7 +101,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Drawer — stacks nav + contact on mobile/tablet */}
+      {/* Mobile drawer */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-300 ${mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
         style={{ backgroundColor: '#6A2578' }}
@@ -93,16 +111,27 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              className="text-white font-semibold text-base py-2.5 border-b border-white/10"
+              className="text-white text-brand-nav-link font-brand-nav-link py-2.5 border-b border-white/10"
               onClick={() => setMobileOpen(false)}
             >
               {link.label}
             </a>
           ))}
-          {/* Contact Us in drawer for mobile (sm:hidden above already shows it in tablet bar) */}
-          <a href="#contact" className="sm:hidden contact-btn mt-3 text-center" onClick={() => setMobileOpen(false)}>
-            Contact Us
+          <a href="#contact" className="sm:hidden contact-btn mt-3 text-center text-brand-button font-brand-button px-4 py-2 bg-white text-brand-purple rounded-full hover:bg-gray-100 transition-colors" onClick={() => setMobileOpen(false)}>
+            {t.nav.contact}
           </a>
+          {/* Language switcher in drawer */}
+          <div className="flex gap-2 mt-3 pt-3 border-t border-white/10">
+            {Object.entries(locales).map(([code, meta]) => (
+              <button
+                key={code}
+                onClick={() => setLocale(code)}
+                className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${locale === code ? 'bg-white text-brand-purple' : 'text-white/70 hover:text-white border border-white/30'}`}
+              >
+                {meta.label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </header>

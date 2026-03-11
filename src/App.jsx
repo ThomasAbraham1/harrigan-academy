@@ -1,6 +1,11 @@
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
 import FeaturesBar from './components/FeaturesBar'
+import WhyUsSection from './components/WhyUsSection'
+import AboutSection from './components/AboutSection'
+import TestimonialsSection from './components/TestimonialsSection'
+import ContactSection from './components/ContactSection'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -8,18 +13,26 @@ function App() {
       {/* Header / Navigation */}
       <Navbar />
 
-      {/* Hero Section */}
-      <HeroSection />
-
-      {/* Features Bar */}
-      <FeaturesBar />
-
-      {/* Placeholder for remaining sections */}
-      <div className="py-24 bg-white text-center">
-        <p className="text-gray-400 text-lg font-medium">
-          More sections coming soon...
-        </p>
+      {/* Hero & Features — tightly coupled */}
+      <div>
+        <HeroSection />
+        <FeaturesBar />
       </div>
+
+      {/* Why Us */}
+      <WhyUsSection />
+
+      {/* About Our Program */}
+      <AboutSection />
+
+      {/* Testimonials */}
+      <TestimonialsSection />
+
+      {/* Contact */}
+      <ContactSection />
+
+      {/* Footer */}
+      <Footer />
     </div>
   )
 }
