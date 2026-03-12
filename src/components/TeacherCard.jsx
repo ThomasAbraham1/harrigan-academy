@@ -20,9 +20,9 @@ export default function TeacherCard({ name, role, bio, image, featured = false }
 
         {/* Content */}
         <div className="flex-1 p-8 md:p-12 flex flex-col justify-center gap-4 text-white">
-          <h2 className="text-3xl md:text-4xl font-bold leading-tight">{name}</h2>
-          <p className="text-brand-mint text-sm font-bold uppercase tracking-widest">{role}</p>
-          <p className="text-white/85 text-base md:text-lg leading-relaxed">{bio}</p>
+          <h2 className="text-section-h font-antique font-section-h leading-tight">{name}</h2>
+          <p className="text-brand-mint text-sm font-montserrat font-bold uppercase tracking-widest">{role}</p>
+          <p className="text-white/85 text-section-p-large font-montserrat font-section-p-large leading-relaxed whitespace-pre-line">{bio}</p>
         </div>
       </div>
     )
@@ -31,7 +31,7 @@ export default function TeacherCard({ name, role, bio, image, featured = false }
   return (
     <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col border border-gray-100">
       {/* Photo */}
-      <div className="w-full aspect-[4/3] bg-[#f3eef9] overflow-hidden relative">
+      <div className="w-full aspect-[4/3] bg-[#f9f3fa] overflow-hidden relative">
         <img
           src={image}
           alt={name}
@@ -42,9 +42,9 @@ export default function TeacherCard({ name, role, bio, image, featured = false }
 
       {/* Content */}
       <div className="p-6 flex flex-col flex-grow">
-        <h3 className="font-bold text-gray-900 text-lg mb-1">{name}</h3>
-        <p className="text-xs font-bold uppercase tracking-widest mb-3 text-brand-purple">{role}</p>
-        <p className="text-gray-600 text-sm leading-relaxed flex-grow">{bio}</p>
+        <h3 className="text-brand-logo font-montserrat font-bold text-gray-900 mb-1">{name}</h3>
+        <p className="text-xs font-montserrat font-bold uppercase tracking-widest mb-3 text-brand-purple">{role}</p>
+        <p className="text-section-p font-montserrat text-gray-600 leading-relaxed flex-grow whitespace-pre-line">{bio}</p>
       </div>
     </div>
   )

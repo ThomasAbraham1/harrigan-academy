@@ -7,7 +7,7 @@ import FAQPage from './pages/FAQPage'
 // Wrapper that provides I18nProvider inside the route (so useParams works)
 function LangLayout() {
   const { lang } = useParams()
-  const validLangs = ['en', 'ru', 'ja']
+  const validLangs = ['en', 'ru', 'ja', 'zh']
 
   if (!validLangs.includes(lang)) {
     return <Navigate to="/en/" replace />

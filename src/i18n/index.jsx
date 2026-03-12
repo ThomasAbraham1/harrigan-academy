@@ -1,13 +1,15 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState, useEffect, useMemo } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import en from './en.js'
 import ru from './ru.js'
 import ja from './ja.js'
+import zh from './zh.js'
 
 export const LOCALES = {
   en: { label: 'EN', nativeLabel: 'English',  strings: en },
   ru: { label: 'RU', nativeLabel: 'Русский',  strings: ru },
   ja: { label: 'JA', nativeLabel: '日本語',    strings: ja },
+  zh: { label: 'ZH', nativeLabel: '简体中文',   strings: zh },
 }
 
 const VALID_LANGS = Object.keys(LOCALES)
@@ -33,16 +35,16 @@ export function I18nProvider({ children }) {
     setLocaleState(newLang)
     // Preserve the path suffix (e.g. /en/teachers → /ru/teachers)
     const currentPath = window.location.pathname
-    const suffix = currentPath.replace(/^\/(en|ru|ja)/, '') || '/'
+    const suffix = currentPath.replace(/^\/(en|ru|ja|zh)/, '') || '/'
     navigate(`/${newLang}${suffix}`)
   }
 
-  const value = {
+  const value = useMemo(() => ({
     locale,
     setLocale,
     locales: LOCALES,
     t: LOCALES[locale].strings,
-  }
+  }), [locale])
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>
 }

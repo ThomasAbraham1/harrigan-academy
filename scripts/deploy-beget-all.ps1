@@ -45,7 +45,7 @@ Write-Host "Uploading root files..." -ForegroundColor Cyan
 $rootFiles = Get-ChildItem "$dist" -File
 foreach ($rf in $rootFiles) {
     Write-Host "  Uploading $($rf.Name)..." -ForegroundColor Cyan
-    curl.exe -s -T "$($rf.FullName)" "$ftpBase/$($rf.Name)" -u $creds
+    curl.exe -v --retry 5 -T "$($rf.FullName)" "$ftpBase/$($rf.Name)" -u $creds
     Write-Host "  OK: $($rf.Name)"
 }
 
@@ -59,7 +59,7 @@ if ($assetFiles) {
     foreach ($f in $assetFiles) {
         $relPath = $f.FullName.Substring($assetsPath.Length + 1).Replace('\', '/')
         Write-Host "  Uploading $relPath..." -ForegroundColor Cyan
-        curl.exe -s -T "$($f.FullName)" "$ftpBase/assets/$relPath" --ftp-create-dirs -u $creds
+        curl.exe -v --retry 5 -T "$($f.FullName)" "$ftpBase/assets/$relPath" --ftp-create-dirs -u $creds
         Write-Host "  OK: assets/$relPath"
     }
 }

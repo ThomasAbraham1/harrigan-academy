@@ -20,23 +20,23 @@ const en = {
     cta: 'Start Learning Today',
     slides: [
       {
-        title:    'Fun Online Classes to improve your English!',
+        title:    'Fun Online Classes to improve \nyour English!',
         subtitle: 'With experienced international teachers who care about your progress.',
       },
       {
-        title:    'Learning That\nFeels Natural',
+        title:    'Learning That Feels Natural',
         subtitle: 'Flexible classes that fit easily into your daily routine',
       },
       {
-        title:    'Personal 1:1 Lessons\ndesigned just for you',
+        title:    'Personal 1:1 Lessons designed \njust for you',
         subtitle: 'Learn at your own pace with a teacher\nfocused entirely on your progress',
       },
       {
-        title:    'Learn Together\nin Small Groups',
+        title:    'Learn Together in Small Groups',
         subtitle: 'Interactive classes with small batches of 5–6 students',
       },
       {
-        title:    'Teachers from\nAround the World',
+        title:    'Teachers from Around the World',
         subtitle: 'Experienced educators who bring global and multilingual perspective',
       },
     ],
@@ -106,10 +106,10 @@ const en = {
 
   // ── Contact Section ────────────────────────────────────────
   contact: {
-    eyebrow:       'Get in touch',
-    sectionTitle:  'Book a Free\nTrial Lesson',
+    eyebrow:       'Ready To Start?',
+    sectionTitle:  'Get in Touch with Us Today!',
     subtitle:      "Ready to start? Send us a message and we'll schedule your free trial class.",
-    formTitle:     'Send us a message',
+    formTitle:     'Send Us a Message',
     formSubtitle:  "We'll get back to you within 24 hours.",
     labelName:     'Your Name',
     placeholderName: 'e.g. Anna Ivanova',
@@ -117,7 +117,7 @@ const en = {
     placeholderEmail: 'e.g. anna@email.com',
     labelMessage:  'Your Message',
     placeholderMessage: "Tell us about your child's age, current level, or any questions you have...",
-    submitButton:  'Send Message',
+    submitButton:  'Send',
     phoneLabel:    'Phone',
     emailLabel:    'Email',
   },

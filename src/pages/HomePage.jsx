@@ -33,17 +33,37 @@ export default function HomePage() {
   }, [location.state])
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
       <Navbar />
+      
+      {/* Sentinel for Navbar scroll state */}
+      <div id="scroll-sentinel" className="absolute top-0 left-0 w-px h-px pointer-events-none" aria-hidden="true" />
+
       <div>
         <HeroSection />
         <FeaturesBar />
       </div>
-      <WhyUsSection />
-      <StatementBanner />
-      <AboutSection />
-      <TestimonialsSection />
-      <ContactSection />
+
+      <div style={{ contentVisibility: 'auto', containIntrinsicSize: '0 1000px' }}>
+        <WhyUsSection />
+      </div>
+
+      <div style={{ contentVisibility: 'auto', containIntrinsicSize: '0 250px' }}>
+        <StatementBanner />
+      </div>
+
+      <div style={{ contentVisibility: 'auto', containIntrinsicSize: '0 800px' }}>
+        <AboutSection />
+      </div>
+
+      <div style={{ contentVisibility: 'auto', containIntrinsicSize: '0 600px' }}>
+        <TestimonialsSection />
+      </div>
+
+      <div style={{ contentVisibility: 'auto', containIntrinsicSize: '0 1000px' }}>
+        <ContactSection />
+      </div>
+
       <Footer />
     </div>
   )

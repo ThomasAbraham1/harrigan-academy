@@ -20,8 +20,7 @@ export default function FeaturesBar() {
         backgroundRepeat:   'repeat-x',
         backgroundSize:     'auto 100%',
         backgroundPosition: 'center',
-        transform: 'translateZ(0)',
-        willChange: 'transform',
+        transform: 'translate3d(0,0,0)',
       }}
     >
       <div className="max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20">
@@ -37,8 +36,8 @@ export default function FeaturesBar() {
                 className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex-shrink-0 object-contain transition-transform duration-300 group-hover:scale-110"
               />
               <p
-                className="text-brand-feature-label font-brand-feature-label"
-                style={{ color: '#7B2D8B', whiteSpace: 'pre-line' }}
+                className="text-sm sm:text-base font-montserrat font-bold"
+                style={{ color: '#904ba2', whiteSpace: 'pre-line' }}
               >
                 {t.features[feature.key]}
               </p>

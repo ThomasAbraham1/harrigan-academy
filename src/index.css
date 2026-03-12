@@ -33,7 +33,7 @@
   }
 
   .contact-btn {
-    @apply bg-white text-brand-purple font-bold px-6 py-2.5 rounded-full text-sm transition-all duration-300 whitespace-nowrap shadow-sm;
+    @apply bg-white text-[#904ba2] font-bold px-6 py-2.5 rounded-full text-sm transition-all duration-300 whitespace-nowrap shadow-sm;
   }
   .contact-btn:hover {
     @apply bg-gray-100 shadow-md scale-105;
@@ -74,7 +74,15 @@
   @apply block w-6 h-0.5 bg-white rounded transition-all duration-300;
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling and anchor offsets */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Match Navbar height */
+}
+
+/* Base performance boosts */
+body {
+  overscroll-behavior-y: none; /* Prevents bounce jank on some browsers */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

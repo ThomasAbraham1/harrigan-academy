@@ -50,9 +50,18 @@ export default function Navbar() {
   ]
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    // Highly efficient: only triggers when crossing the 10px mark
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setScrolled(!entry.isIntersecting)
+      },
+      { threshold: 0, rootMargin: '-10px 0px 0px 0px' }
+    )
+
+    const sentinel = document.getElementById('scroll-sentinel')
+    if (sentinel) observer.observe(sentinel)
+
+    return () => observer.disconnect()
   }, [])
 
   const closeMobile = useCallback(() => setMobileOpen(false), [])
@@ -60,14 +69,14 @@ export default function Navbar() {
   return (
     <header
       className={`sticky top-0 z-50 transition-shadow duration-300 ${scrolled ? 'shadow-xl shadow-purple-900/30' : ''}`}
-      style={{ backgroundColor: '#7B2D8B' }}
+      style={{ backgroundColor: '#904ba2' }}
     >
       <div className="max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20">
         <div className="flex items-center justify-between h-16 sm:h-20">
 
           {/* Logo — goes home */}
           <Link to={`/${activeLang}/`} className="flex-shrink-0">
-            <span className="text-white text-brand-logo font-brand-logo">
+            <span className="text-white text-brand-logo font-antique font-brand-logo">
               {t.nav.logo}
             </span>
           </Link>
@@ -79,7 +88,7 @@ export default function Navbar() {
               <button
                 key={link.sectionId}
                 onClick={() => scrollToSection(link.sectionId)}
-                className="nav-link text-brand-nav-link font-brand-nav-link text-white hover:text-brand-mint-dark transition-colors cursor-pointer bg-transparent border-0 p-0"
+                className="text-sm font-montserrat font-semibold text-white hover:text-[#DCF0ED] transition-colors cursor-pointer bg-transparent border-0 p-0"
               >
                 {link.label}
               </button>
@@ -89,7 +98,7 @@ export default function Navbar() {
               <Link
                 key={link.to}
                 to={link.to}
-                className="nav-link text-brand-nav-link font-brand-nav-link text-white hover:text-brand-mint-dark transition-colors"
+                className="text-sm font-montserrat font-semibold text-white hover:text-[#DCF0ED] transition-colors"
               >
                 {link.label}
               </Link>
@@ -100,7 +109,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3 xl:gap-4">
             <button
               onClick={() => scrollToSection('contact')}
-              className="contact-btn text-brand-button font-brand-button px-5 py-2.5 bg-white text-brand-purple rounded-full hover:bg-gray-100 transition-colors cursor-pointer border-0"
+              className="px-5 py-2.5 bg-white text-[#904ba2] font-montserrat font-bold rounded-full hover:bg-[#FDF1FE] transition-colors cursor-pointer border-0"
             >
               {t.nav.contact}
             </button>
@@ -139,7 +148,7 @@ export default function Navbar() {
           <div className="hidden sm:flex lg:hidden items-center gap-3">
             <button
               onClick={() => scrollToSection('contact')}
-              className="contact-btn text-brand-button font-brand-button px-4 py-2 bg-white text-brand-purple rounded-full hover:bg-gray-100 transition-colors border-0"
+              className="px-4 py-2 bg-white text-[#904ba2] font-montserrat font-bold rounded-full hover:bg-gray-100 transition-colors border-0"
             >
               {t.nav.contact}
             </button>
@@ -162,7 +171,7 @@ export default function Navbar() {
       {/* Mobile drawer */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-300 ${mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
-        style={{ backgroundColor: '#6A2578' }}
+        style={{ backgroundColor: '#7a3b8d' }}
       >
         <div className="px-4 py-4 flex flex-col gap-2">
           {/* Section scroll links */}

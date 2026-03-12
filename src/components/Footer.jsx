@@ -20,7 +20,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer style={{ backgroundColor: '#7B2D8B' }}>
+    <footer style={{ backgroundColor: '#904ba2' }}>
 
       {/* Top bar */}
       <div className="border-b border-white/10">
@@ -49,8 +49,8 @@ export default function Footer() {
       {/* Main body */}
       <div className="max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20 py-12 flex flex-col sm:flex-row gap-10 justify-between">
         <div className="flex flex-col gap-5 max-w-sm">
-          <p className="text-white text-2xl font-bold tracking-tight">{t.nav.logo}</p>
-          <p className="text-white/65 text-sm leading-relaxed">{t.footer.brandDescription}</p>
+          <p className="text-white text-brand-logo font-antique font-brand-logo tracking-tight">{t.nav.logo}</p>
+          <p className="text-white/65 font-montserrat text-sm leading-relaxed">{t.footer.brandDescription}</p>
           <div className="flex flex-wrap gap-2 mt-1">
             {socials.map((s) => (
               <a key={s.label} href={s.href} aria-label={s.label}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useI18n } from '../i18n/index.jsx'
 
 const cardConfig = [
@@ -31,7 +31,7 @@ const cardConfig = [
   },
 ]
 
-export default function WhyUsSection() {
+function WhyUsSection() {
   const { t } = useI18n()
 
   return (
@@ -39,13 +39,13 @@ export default function WhyUsSection() {
       <div className="max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20 relative z-10">
 
         {/* Decorative icons */}
-        <img src="/assets/images/element-clouds.webp" alt="" className="absolute -left-8 md:-left-16 top-10 md:top-20 w-32 md:w-48 opacity-90 z-0 pointer-events-none" />
-        <img src="/assets/images/element-cloud.webp"  alt="" className="absolute right-4 md:right-10 top-0 md:top-10 w-24 md:w-32 opacity-90 z-0 pointer-events-none" />
-        <img src="/assets/images/element-rainbow.webp" alt="" className="absolute -right-2 sm:right-8 md:-right-4 lg:-right-12 bottom-4 md:bottom-10 w-32 md:w-48 opacity-90 z-20 pointer-events-none" />
+        <img src="/assets/images/element-clouds.webp" alt="" className="absolute -left-8 md:-left-16 top-10 md:top-20 w-32 md:w-48 opacity-90 z-0 pointer-events-none" style={{ transform: 'translate3d(0,0,0)' }} />
+        <img src="/assets/images/element-cloud.webp"  alt="" className="absolute right-4 md:right-10 top-0 md:top-10 w-24 md:w-32 opacity-90 z-0 pointer-events-none" style={{ transform: 'translate3d(0,0,0)' }} />
+        <img src="/assets/images/element-rainbow.webp" alt="" className="absolute -right-2 sm:right-8 md:-right-4 lg:-right-12 bottom-4 md:bottom-10 w-32 md:w-48 opacity-90 z-20 pointer-events-none" style={{ transform: 'translate3d(0,0,0)' }} />
 
         {/* Title */}
         <div className="text-center mb-12 sm:mb-20 relative z-10">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-brand-section-title leading-tight whitespace-pre-line" style={{ color: '#7B2D8B' }}>
+          <h2 className="text-section-h font-antique font-section-h leading-tight whitespace-pre-line text-brand-purple">
             {t.whyUs.sectionTitle}
           </h2>
         </div>
@@ -58,20 +58,24 @@ export default function WhyUsSection() {
               className="w-full sm:w-4/5 md:w-2/3 lg:w-1/3 flex flex-col rounded-3xl overflow-hidden transition-transform duration-300 hover:scale-105 shadow-lg shadow-gray-200/40 mb-8 lg:mb-0"
               style={{
                 backgroundColor: card.bgColor,
-                transform: `${card.rotation} translateZ(0)`,
+                transform: `${card.rotation} translate3d(0,0,0)`,
                 marginTop: card.marginTop,
                 zIndex: card.zIndex,
-                willChange: 'transform',
               }}
             >
               <div className="w-full aspect-[4/3] p-4 sm:p-5">
-                <img src={card.image} alt={t.whyUs.cards[index].title} className="w-full h-full object-cover rounded-xl sm:rounded-2xl" />
+                <img 
+                  src={card.image} 
+                  alt={t.whyUs.cards[index].title} 
+                  decoding="async"
+                  className="w-full h-full object-cover rounded-xl sm:rounded-2xl" 
+                />
               </div>
               <div className="px-6 pb-6 lg:px-8 lg:pb-8 flex flex-col items-center text-center flex-grow">
-                <h3 className="text-lg sm:text-xl font-brand-feature-label mb-3" style={{ color: card.titleColor }}>
+                <h3 className="text-xl sm:text-2xl font-antique font-section-h mb-3" style={{ color: card.titleColor }}>
                   {t.whyUs.cards[index].title}
                 </h3>
-                <p className="text-sm sm:text-base font-brand-body leading-relaxed" style={{ color: card.textColor }}>
+                <p className="text-sm sm:text-base md:text-section-p-large font-montserrat font-section-p-large leading-relaxed" style={{ color: card.textColor }}>
                   {t.whyUs.cards[index].description}
                 </p>
               </div>
@@ -82,3 +86,5 @@ export default function WhyUsSection() {
     </section>
   )
 }
+
+export default memo(WhyUsSection)

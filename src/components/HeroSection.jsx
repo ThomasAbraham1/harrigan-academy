@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef, memo } from 'react'
 import { useI18n } from '../i18n/index.jsx'
 
 const slideConfig = [
@@ -52,7 +52,7 @@ const slideConfig = [
   },
 ]
 
-export default function HeroSection() {
+function HeroSection() {
   const { t } = useI18n()
   const [current, setCurrent] = useState(0)
 
@@ -79,7 +79,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-white min-h-[150vw] sm:min-h-0 sm:aspect-[4/3] md:aspect-video lg:aspect-auto lg:h-[min(90vw,720px)] lg:min-h-[320px]"
+      className="relative w-full overflow-hidden bg-white min-h-[160vw] sm:min-h-0 sm:aspect-[4/3] md:aspect-video lg:aspect-auto lg:h-[min(90vw,720px)] lg:min-h-[320px]"
     >
       {/* Full-bleed background slides — picture element for responsive images */}
       {slideConfig.map((s, i) => (
@@ -97,7 +97,10 @@ export default function HeroSection() {
                 src={s.image}
                 alt={s.alt}
                 decoding="async"
+                loading={i === 0 ? "eager" : "lazy"}
+                fetchPriority={i === 0 ? "high" : "low"}
                 className="w-full h-full object-cover object-top"
+                style={{ aspectRatio: '16/9' }}
               />
             </picture>
             
@@ -137,17 +140,17 @@ export default function HeroSection() {
                 : 'md:ml-0 md:text-left md:items-start'}
             `}
           >
-            <h1 className="text-4xl sm:text-5xl lg:text-[4rem] font-brand-hero-title text-brand-purple-hero leading-[1.12] whitespace-pre-line">
+            <h1 className="text-hero-h font-antique font-hero-h text-brand-purple leading-[1.12] whitespace-pre-line">
               {t.hero.slides[current].title}
             </h1>
 
-            <p className="text-gray-900 text-base sm:text-lg lg:text-3xl font-brand-body leading-relaxed whitespace-pre-line">
+            <p className="text-gray-900 lg:w-[60%] text-hero-p font-montserrat font-hero-p leading-relaxed whitespace-pre-line">
               {t.hero.slides[current].subtitle}
             </p>
 
             <a
               href="#contact"
-              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 rounded-full font-brand-button text-white text-base sm:text-lg transition-transform duration-300 hover:scale-105 mt-2 sm:mt-4 bg-brand-purple"
+              className="inline-flex items-center px-6 py-3 rounded-full font-montserrat font-hero-cta text-hero-cta text-white transition-transform duration-300 hover:scale-105 mt-2 sm:mt-4 bg-brand-purple"
             >
               {t.hero.cta}
             </a>
@@ -166,7 +169,7 @@ export default function HeroSection() {
             style={{
               width:           i === current ? '24px' : '9px',
               height:          '9px',
-              backgroundColor: i === current ? '#7B2D8B' : 'rgba(123,45,139,0.35)',
+              backgroundColor: i === current ? '#904ba2' : 'rgba(144, 75, 162, 0.35)',
             }}
           />
         ))}
@@ -174,3 +177,5 @@ export default function HeroSection() {
     </section>
   )
 }
+
+export default memo(HeroSection)

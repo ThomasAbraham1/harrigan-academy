@@ -1,48 +1,105 @@
 /**
  * Japanese locale (ja)
- * ⚠️  All strings below are PLACEHOLDER — they duplicate the English text
- * and need to be replaced with proper Japanese translations.
- * Search for "TODO_JA:" comments to find strings that still need translation.
  */
-import en from './en.js'
-
 const ja = {
   nav: {
-    logo:          'Harrigan Academy', // Keep brand name
-    whyUs:         '選ばれる理由',              // TODO_JA: review
-    about:         'プログラムについて',          // TODO_JA: review
-    teachers:      '講師紹介',                   // TODO_JA: review
-    faq:           'よくある質問',               // TODO_JA: review
-    contact:       'お問い合わせ',               // TODO_JA: review
+    logo:          'Harrigan Academy',
+    whyUs:         '選ばれる理由',
+    about:         'プログラムについて',
+    teachers:      '講師紹介',
+    faq:           'よくある質問',
+    contact:       'お問い合わせ',
     langAriaLabel: '言語を切り替える',
   },
 
   hero: {
-    cta: '今すぐ始める',                         // TODO_JA: review
-    slides: en.hero.slides, // TODO_JA: replace with Japanese text
+    cta: '学び始める',
+    slides: [
+      {
+        title: '楽しく学べるオンライン英語クラス',
+        subtitle: '経験豊かな国際的な講師が、あなたの成長をしっかりサポートします',
+      },
+      {
+        title: 'あなたのためのマンツーマンレッスン',
+        subtitle: 'あなたのペースに合わせて、成長に寄り添う講師と学びます',
+      },
+      {
+        title: '少人数グループで一緒に学ぶ',
+        subtitle: '5～6名の少人数で行うインタラクティブなクラス',
+      },
+      {
+        title: '世界中から集まった講師',
+        subtitle: '国際的で多言語の視点を持つ講師陣',
+      },
+      {
+        title: '自然に身につく学び',
+        subtitle: '日常生活に合わせて学べる柔軟なレッスン',
+      },
+    ],
   },
 
   features: {
-    virtualClasses:        'ライブ \n オンライン授業',    // TODO_JA: review
-    internationalTeachers: '国際的な \n 講師陣',          // TODO_JA: review
-    ageRanges:             '全年齢 \n 対応',              // TODO_JA: review
-    anytime:               'いつでも \n どこでも学べる',   // TODO_JA: review
+    virtualClasses:        'ライブ \n オンラインレッスン',
+    internationalTeachers: '国際的な \n 講師陣',
+    ageRanges:             'すべての年齢 \n に対応',
+    anytime:               'いつでも \n どこでも学べる',
   },
 
-  whyUs: en.whyUs, // TODO_JA: translate entire section together
+  whyUs: {
+    sectionTitle: '生徒がハリガン・アカデミーを\n選ぶ理由',
+    cards: [
+      {
+        title: 'サポート付きで学ぶ',
+        description: 'ジェスチャーやビジュアル、段階的なサポートを使い、自然に学べるようにします',
+      },
+      {
+        title: 'スピーキング重視',
+        description: '生徒は繰り返し、応答し、ロールプレイを通して自信を持って話す力を身につけます。',
+      },
+      {
+        title: '遊びを取り入れた学習',
+        description: 'インタラクティブな物語、ゲーム、歌、会話で楽しく学べます！',
+      },
+    ],
+  },
 
-  about: en.about, // TODO_JA: translate entire section together
+  about: {
+    sectionTitle: 'プログラムについて',
+    slides: [
+      {
+        title: '完全イマージョン',
+        body: '講師は英語のみで授業を行うため、子どもたちは英語環境の中で考え、話す力を自然に身につけます。',
+      },
+      {
+        title: '多文化とのふれあい',
+        body: '私たちの講師は複数の言語を話し、世界各地で活動しています。多文化環境で育った経験があります。',
+      },
+      {
+        title: '指導メソッド',
+        body: '私たちは自然な言語習得メソッドを採用しています。繰り返し練習を通して内容を少しずつ深めます。',
+      },
+    ],
+  },
 
   testimonials: {
-    eyebrow:      '保護者と生徒の声',
+    eyebrow: '保護者と生徒の声',
     sectionTitle: '生徒たちの成功ストーリー',
-    items: en.testimonials.items, // Testimonials always stay in original language
+    items: [
+      { name: 'サビーナ', role: 'カミラの母', quote: '娘はレッスンをとても楽しんでおり、毎回の授業を楽しみにしています。講師はとても忍耐強く励ましてくれるので、娘が英語を話すことに自信を持てるようになってきたのが分かります。' },
+      { name: 'ジュリア', role: 'サミュエルの母', quote: 'このクラスのおかげで、息子は英語力が向上し、話すことにも自信が持てるようになりました。授業は楽しくよく構成されており、講師は子どもたちのやる気を引き出すのがとても上手です。' },
+      { name: 'エリア・グンキン', role: 'パシャの父', quote: '私たちはこの結果にとても満足しています。息子は英語に自信を持つようになり、授業にも積極的に参加しています。講師はとてもプロフェッショナルで親身にサポートしてくれ、生徒一人ひとりの成長を本当に大切にしています。' },
+      { name: 'ミラナの父', role: '保護者', quote: 'ジョン先生と奥様は、2021年から娘のミラナに英語を教えてくれています。ミラナはレッスンをとても楽しんでいます。この期間で彼女の英会話力は大きく向上しました。ジョン先生ご夫妻の英語レッスンを心からおすすめします。🔥' },
+      { name: 'アレクサンドラ・クリュソワ', role: 'ロシア・イルクーツク — 英語教師', quote: '外国人の先生と話すのはこれが初めてで、最初は自分の力でついていけるのか少し不安でした。でも最初のレッスンが終わる頃には、その不安はすべて消えていました。自信が湧き、もっと上達したいという意欲が強くなりました。\n\n生徒を本当に励まし、自分の力を信じさせてくれるジョン先生にとても感謝しています。特に、振り返りの時間に生徒一人ひとりの強みを見つけてくれるところに、先生の細やかな気配りを感じます。毎回のレッスンを楽しみにしています。' },
+      { name: 'エレナ・ポワリソワ', role: '英語教師（指導経験30年以上）', quote: '30年以上の指導経験を持つ教師として、生徒も教師も常に学び、成長し続けていると感じています。ジョン先生のレッスンは、温かくサポートのある雰囲気の中で、英会話力を高めながら、教育方法を含むさまざまなテーマについて話し合える素晴らしい機会です。\n\n大人から子どもまで幅広い指導経験を持ち、多言語を話すポリグロットでもあるジョン先生のもとで学ぶことは、きっと多くの人にとって大きな助けになると確信しています。' },
+      { name: 'デニスとエレナ', role: '受講生', quote: '私と夫はジョン先生と一緒に英語を学んでいます。夫は英語にとても自信がつき、授業や他の人との会話でも、より複雑な表現や語彙を使えるようになったことに驚いています。\n\n私自身も英語教師ですが、英会話力を高めるためにジョン先生のレッスンを受けています。ジョン先生はいつも温かくサポートしてくれ、多くの励ましの言葉をかけてくれます。また、私たちの興味や関心を大切にしながら会話を進めてくれます。' },
+      { name: 'マリーナ・マフィコワ', role: '保護者', quote: '今日の世界では、さまざまな国や文化の人々とコミュニケーションを取ることがとても重要だと感じています。特に子どもたちには、言語を自然に吸収できる幼い頃から外国語を学ぶ機会を与えることが大切です。\n\n私たちの家族にとって、ジョン・ハリガン先生と奥様のケイコ先生の独自の指導法は大きな助けとなりました。会話、ゲーム、歌、物語を通して、子どもたちは英語の会話力を自然に伸ばしていきます。温かくフレンドリーな雰囲気のおかげで、毎回のレッスンが楽しい冒険のように感じられます。' },
+    ],
   },
 
   contact: {
-    eyebrow:          'お問い合わせ',
-    sectionTitle:     '無料体験レッスンを\n予約する',       // TODO_JA: review
-    subtitle:         'ご興味をお持ちですか？メッセージをお送りください。無料体験レッスンをご案内します。', // TODO_JA
+    eyebrow:          '始める準備はできていますか？',
+    sectionTitle:     '今すぐお問い合わせください！',
+    subtitle:         '始める準備はできていますか？メッセージをお送りください。無料体験レッスンをご案内します。',
     formTitle:        'メッセージを送る',
     formSubtitle:     '24時間以内にご返信いたします。',
     labelName:        'お名前',
@@ -51,16 +108,16 @@ const ja = {
     placeholderEmail: '例：hanako@email.com',
     labelMessage:     'メッセージ',
     placeholderMessage: 'お子さまの年齢、レベル、またはご質問をお書きください...',
-    submitButton:     '送信する',
+    submitButton:     '送信',
     phoneLabel:       '電話番号',
     emailLabel:       'メール',
   },
 
   footer: {
-    brandDescription: '子どもから大人まで、経験豊富な国際的講師によるオンライン英語レッスン。', // TODO_JA
+    brandDescription: '子どもから大人まで楽しめるオンライン英語クラス。経験豊かな国際的な講師が、あなたの成長をしっかりサポートします。',
     quickLinksLabel:  'クイックリンク',
     getInTouch:       'お問い合わせ',
-    writeTo:          'メールで連絡',
+    writeTo:          'メッセージを送る',
     copyright:        '© 2026 Harrigan Academy. 全著作権所有。',
     privacy:          'プライバシーポリシー',
     terms:            '利用規約',
@@ -74,7 +131,7 @@ const ja = {
   },
 
   statementBanner: {
-    heading: '集中した学習。速い進歩。', // TODO_JA: review
+    heading: '集中した指導で、より早く上達',
   },
 }
 

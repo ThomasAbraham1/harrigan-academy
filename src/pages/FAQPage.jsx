@@ -53,14 +53,14 @@ function FAQItem({ q, a }) {
         onClick={() => setOpen(!open)}
         aria-expanded={open}
       >
-        <span className="font-semibold text-gray-900 text-base sm:text-lg group-hover:text-brand-purple transition-colors">
+        <span className="text-brand-logo font-montserrat font-bold text-gray-900 group-hover:text-brand-purple transition-colors">
           {q}
         </span>
         <span
           className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300"
           style={{
-            backgroundColor: open ? '#7B2D8B' : '#f3eef9',
-            color: open ? 'white' : '#7B2D8B',
+            backgroundColor: open ? '#904ba2' : '#f3eef9',
+            color: open ? 'white' : '#904ba2',
             transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
           }}
         >
@@ -71,7 +71,7 @@ function FAQItem({ q, a }) {
         className="overflow-hidden transition-all duration-300 ease-in-out"
         style={{ maxHeight: open ? '400px' : '0px', opacity: open ? 1 : 0 }}
       >
-        <p className="pb-5 text-gray-600 text-[15px] leading-relaxed pr-12">{a}</p>
+        <p className="pb-5 text-section-p text-gray-600 font-montserrat font-section-p leading-relaxed pr-12">{a}</p>
       </div>
     </div>
   )
@@ -89,7 +89,7 @@ export default function FAQPage() {
       {/* Header banner */}
       <div
         className="relative overflow-hidden py-20 sm:py-28 px-6 text-center"
-        style={{ backgroundColor: '#7B2D8B' }}
+        style={{ backgroundColor: '#904ba2' }}
       >
         <svg
           className="absolute bottom-[-1px] left-0 w-full"
@@ -100,13 +100,13 @@ export default function FAQPage() {
           <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" />
         </svg>
         <div className="relative z-10 max-w-3xl mx-auto">
-          <p className="text-brand-mint text-sm font-bold uppercase tracking-widest mb-3">
-            Support
+          <p className="text-white text-sm font-montserrat font-bold uppercase tracking-widest mb-3">
+            Questions
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-4">
+          <h1 className="text-hero-h font-antique font-hero-h text-white leading-tight mb-4">
             Frequently Asked Questions
           </h1>
-          <p className="text-white/80 text-lg max-w-xl mx-auto">
+          <p className="text-white/80 font-montserrat font-hero-p text-hero-p max-w-xl mx-auto">
             Everything you need to know about Harrigan Academy. Can't find your answer? Contact us directly.
           </p>
         </div>
@@ -124,16 +124,16 @@ export default function FAQPage() {
 
             {/* Still have questions CTA */}
             <div className="mt-10 text-center p-8 sm:p-10 rounded-2xl border-2 border-brand-purple/20 bg-white">
-              <h3 className="text-2xl font-bold text-brand-purple mb-3">
+              <h3 className="text-section-h font-antique font-section-h text-brand-purple mb-3">
                 Still have questions?
               </h3>
-              <p className="text-gray-600 text-base mb-6 max-w-md mx-auto">
+              <p className="text-section-p text-gray-600 font-montserrat font-section-p mb-6 max-w-md mx-auto">
                 We're happy to help. Reach out and we'll get back to you as soon as possible.
               </p>
               <Link
                 to={`/${activeLang}/`}
                 onClick={() => setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100)}
-                className="inline-flex items-center px-8 py-3 rounded-full bg-brand-purple text-white font-brand-button text-base hover:opacity-90 hover:scale-105 transition-all duration-300"
+                className="inline-flex items-center px-8 py-3 rounded-full bg-brand-purple text-white font-montserrat font-hero-cta text-hero-cta hover:bg-brand-purple-dark hover:scale-105 transition-all duration-300"
               >
                 Contact Us
               </Link>
