@@ -24,7 +24,7 @@ export default function Footer() {
 
       {/* Top bar */}
       <div className="border-b border-white/10">
-        <div className="max-w-7xl mx-auto w-full px-6 sm:px-12 lg:px-20 py-5 flex flex-col sm:flex-row gap-4 sm:gap-8">
+        <div className="max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20 py-5 flex flex-col sm:flex-row gap-4 sm:gap-8">
           <a href="tel:+79850667846" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
             <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.25 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
@@ -47,7 +47,7 @@ export default function Footer() {
       </div>
 
       {/* Main body */}
-      <div className="max-w-7xl mx-auto w-full px-6 sm:px-12 lg:px-20 py-12 flex flex-col sm:flex-row gap-10 justify-between">
+      <div className="max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20 py-12 flex flex-col sm:flex-row gap-10 justify-between">
         <div className="flex flex-col gap-5 max-w-sm">
           <p className="text-white text-2xl font-bold tracking-tight">{t.nav.logo}</p>
           <p className="text-white/65 text-sm leading-relaxed">{t.footer.brandDescription}</p>
@@ -77,7 +77,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto w-full px-6 sm:px-12 lg:px-20 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+        <div className="max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
           <p className="text-white/40 text-xs">{t.footer.copyright}</p>
           <div className="flex gap-5">
             <a href="#" className="text-white/40 hover:text-white/70 text-xs transition-colors">{t.footer.privacy}</a>

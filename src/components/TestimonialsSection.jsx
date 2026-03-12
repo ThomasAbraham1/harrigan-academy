@@ -57,7 +57,7 @@ export default function TestimonialsSection() {
       <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full opacity-30" style={{ backgroundColor: '#7B2D8B', boxShadow: '0 0 80px 40px #7B2D8B' }} />
       <div className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full opacity-30" style={{ backgroundColor: '#7B2D8B', boxShadow: '0 0 80px 40px #7B2D8B' }} />
 
-      <div className="relative max-w-7xl mx-auto w-full px-6 sm:px-12 lg:px-20">
+      <div className="relative max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20">
         <div className="text-center mb-10 sm:mb-14">
           <p className="text-sm font-semibold uppercase tracking-widest text-brand-purple mb-3">{t.testimonials.eyebrow}</p>
           <h2 className="text-brand-section-title font-brand-section-title text-brand-purple">

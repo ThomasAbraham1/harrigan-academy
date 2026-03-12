@@ -72,6 +72,10 @@ const ja = {
       contact:  'お問い合わせ',
     },
   },
+
+  statementBanner: {
+    heading: '集中した学習。速い進歩。', // TODO_JA: review
+  },
 }
 
 export default ja

@@ -1,17 +1,52 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
+import { Link, useParams, useNavigate, useLocation } from 'react-router-dom'
 import { useI18n } from '../i18n/index.jsx'
+
+// Scroll to a section by id without leaving a # in the URL.
+// If we're not on the home page, navigate home first and carry the
+// section id in router state so HomePage can scroll after mounting.
+function useScrollToSection() {
+  const navigate   = useNavigate()
+  const { lang }   = useParams()
+  const activeLang = lang || 'en'
+  const location   = useLocation()
+
+  return useCallback((sectionId) => {
+    const isHome = location.pathname === `/${activeLang}/` ||
+                   location.pathname === `/${activeLang}`
+    if (isHome) {
+      const el = document.getElementById(sectionId)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        window.history.replaceState(null, '', window.location.pathname)
+      }
+    } else {
+      // Navigate home and pass the target section in router state
+      navigate(`/${activeLang}/`, { state: { scrollTo: sectionId } })
+    }
+  }, [navigate, activeLang, location.pathname])
+}
 
 export default function Navbar() {
   const { t, locale, setLocale, locales } = useI18n()
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const [scrolled, setScrolled]   = useState(false)
-  const [langOpen, setLangOpen]   = useState(false)
+  const { lang } = useParams()
+  const activeLang = lang || 'en'
+  const scrollToSection = useScrollToSection()
 
-  const navLinks = [
-    { label: t.nav.whyUs,    href: '#why-us' },
-    { label: t.nav.about,    href: '#about' },
-    { label: t.nav.teachers, href: '#teachers' },
-    { label: t.nav.faq,      href: '#faq' },
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled]     = useState(false)
+  const [langOpen, setLangOpen]     = useState(false)
+
+  // Section links — scroll-only, no page navigation
+  const sectionLinks = [
+    { label: t.nav.whyUs, sectionId: 'why-us' },
+    { label: t.nav.about, sectionId: 'about'  },
+  ]
+
+  // Page links — full separate pages
+  const pageLinks = [
+    { label: t.nav.teachers, to: `/${activeLang}/teachers` },
+    { label: t.nav.faq,      to: `/${activeLang}/faq`      },
   ]
 
   useEffect(() => {
@@ -20,35 +55,55 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const closeMobile = useCallback(() => setMobileOpen(false), [])
+
   return (
     <header
       className={`sticky top-0 z-50 transition-shadow duration-300 ${scrolled ? 'shadow-xl shadow-purple-900/30' : ''}`}
       style={{ backgroundColor: '#7B2D8B' }}
     >
-      <div className="max-w-7xl mx-auto w-full px-6 sm:px-12 lg:px-20">
+      <div className="max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20">
         <div className="flex items-center justify-between h-16 sm:h-20">
 
-          {/* Logo */}
-          <a href="#" className="flex-shrink-0">
+          {/* Logo — goes home */}
+          <Link to={`/${activeLang}/`} className="flex-shrink-0">
             <span className="text-white text-brand-logo font-brand-logo">
               {t.nav.logo}
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-            {navLinks.map((link) => (
-              <a key={link.label} href={link.href} className="nav-link text-brand-nav-link font-brand-nav-link text-white hover:text-brand-mint-dark transition-colors">
+            {/* Section scroll links */}
+            {sectionLinks.map((link) => (
+              <button
+                key={link.sectionId}
+                onClick={() => scrollToSection(link.sectionId)}
+                className="nav-link text-brand-nav-link font-brand-nav-link text-white hover:text-brand-mint-dark transition-colors cursor-pointer bg-transparent border-0 p-0"
+              >
                 {link.label}
-              </a>
+              </button>
+            ))}
+            {/* Page links */}
+            {pageLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className="nav-link text-brand-nav-link font-brand-nav-link text-white hover:text-brand-mint-dark transition-colors"
+              >
+                {link.label}
+              </Link>
             ))}
           </nav>
 
           {/* Right: Contact Us + Language switcher */}
           <div className="hidden lg:flex items-center gap-3 xl:gap-4">
-            <a href="#contact" className="contact-btn text-brand-button font-brand-button px-5 py-2.5 bg-white text-brand-purple rounded-full hover:bg-gray-100 transition-colors">
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="contact-btn text-brand-button font-brand-button px-5 py-2.5 bg-white text-brand-purple rounded-full hover:bg-gray-100 transition-colors cursor-pointer border-0"
+            >
               {t.nav.contact}
-            </a>
+            </button>
 
             {/* Language switcher dropdown */}
             <div className="relative">
@@ -82,9 +137,12 @@ export default function Navbar() {
 
           {/* Tablet: Contact Us + hamburger */}
           <div className="hidden sm:flex lg:hidden items-center gap-3">
-            <a href="#contact" className="contact-btn text-brand-button font-brand-button px-4 py-2 bg-white text-brand-purple rounded-full hover:bg-gray-100 transition-colors">
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="contact-btn text-brand-button font-brand-button px-4 py-2 bg-white text-brand-purple rounded-full hover:bg-gray-100 transition-colors border-0"
+            >
               {t.nav.contact}
-            </a>
+            </button>
             <button className="flex flex-col gap-1.5 p-1.5" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
               <span className={`hamburger-line ${mobileOpen ? 'rotate-45 translate-y-2 origin-center' : ''}`} />
               <span className={`hamburger-line ${mobileOpen ? 'opacity-0 scale-x-0' : ''}`} />
@@ -107,25 +165,39 @@ export default function Navbar() {
         style={{ backgroundColor: '#6A2578' }}
       >
         <div className="px-4 py-4 flex flex-col gap-2">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-white text-brand-nav-link font-brand-nav-link py-2.5 border-b border-white/10"
-              onClick={() => setMobileOpen(false)}
+          {/* Section scroll links */}
+          {sectionLinks.map((link) => (
+            <button
+              key={link.sectionId}
+              onClick={() => { scrollToSection(link.sectionId); closeMobile() }}
+              className="text-white text-brand-nav-link font-brand-nav-link py-2.5 border-b border-white/10 text-left bg-transparent border-l-0 border-r-0 border-t-0 w-full"
             >
               {link.label}
-            </a>
+            </button>
           ))}
-          <a href="#contact" className="sm:hidden contact-btn mt-3 text-center text-brand-button font-brand-button px-4 py-2 bg-white text-brand-purple rounded-full hover:bg-gray-100 transition-colors" onClick={() => setMobileOpen(false)}>
+          {/* Page links */}
+          {pageLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className="text-white text-brand-nav-link font-brand-nav-link py-2.5 border-b border-white/10"
+              onClick={closeMobile}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <button
+            onClick={() => { scrollToSection('contact'); closeMobile() }}
+            className="sm:hidden contact-btn mt-3 text-center text-brand-button font-brand-button px-4 py-2 bg-white text-brand-purple rounded-full hover:bg-gray-100 transition-colors border-0"
+          >
             {t.nav.contact}
-          </a>
+          </button>
           {/* Language switcher in drawer */}
           <div className="flex gap-2 mt-3 pt-3 border-t border-white/10">
             {Object.entries(locales).map(([code, meta]) => (
               <button
                 key={code}
-                onClick={() => setLocale(code)}
+                onClick={() => { setLocale(code); closeMobile() }}
                 className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${locale === code ? 'bg-white text-brand-purple' : 'text-white/70 hover:text-white border border-white/30'}`}
               >
                 {meta.label}

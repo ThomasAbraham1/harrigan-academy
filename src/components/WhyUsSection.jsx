@@ -3,7 +3,7 @@ import { useI18n } from '../i18n/index.jsx'
 
 const cardConfig = [
   {
-    image:     '/assets/images/why-us-1.jpg',
+    image:     '/assets/images/why-us-1.webp',
     bgColor:   '#FDF1FE',
     textColor: '#D949C6',
     titleColor:'#A32EA6',
@@ -12,7 +12,7 @@ const cardConfig = [
     marginTop: '0px',
   },
   {
-    image:     '/assets/images/why-us-2.jpg',
+    image:     '/assets/images/why-us-2.webp',
     bgColor:   '#E6F8F9',
     textColor: '#57A3A6',
     titleColor:'#2B8388',
@@ -21,7 +21,7 @@ const cardConfig = [
     marginTop: '-5px',
   },
   {
-    image:     '/assets/images/why-us-3.jpg',
+    image:     '/assets/images/why-us-3.webp',
     bgColor:   '#FEF4E8',
     textColor: '#D98F5E',
     titleColor:'#C97746',
@@ -35,13 +35,13 @@ export default function WhyUsSection() {
   const { t } = useI18n()
 
   return (
-    <section id="why-us" className="relative w-full py-16 sm:py-24 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto w-full px-6 sm:px-12 lg:px-20 relative z-10">
+    <section id="why-us" className="relative w-full py-16 sm:py-24 bg-white">
+      <div className="max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20 relative z-10">
 
         {/* Decorative icons */}
-        <img src="/assets/images/element-clouds.png" alt="" className="absolute -left-8 md:-left-16 top-10 md:top-20 w-32 md:w-48 opacity-90 z-0 pointer-events-none" />
-        <img src="/assets/images/element-cloud.png"  alt="" className="absolute right-4 md:right-10 top-0 md:top-10 w-24 md:w-32 opacity-90 z-0 pointer-events-none" />
-        <img src="/assets/images/element-rainbow.png" alt="" className="absolute -right-4 md:-right-10 bottom-0 md:bottom-10 w-32 md:w-40 opacity-90 z-30 pointer-events-none" />
+        <img src="/assets/images/element-clouds.webp" alt="" className="absolute -left-8 md:-left-16 top-10 md:top-20 w-32 md:w-48 opacity-90 z-0 pointer-events-none" />
+        <img src="/assets/images/element-cloud.webp"  alt="" className="absolute right-4 md:right-10 top-0 md:top-10 w-24 md:w-32 opacity-90 z-0 pointer-events-none" />
+        <img src="/assets/images/element-rainbow.webp" alt="" className="absolute -right-2 sm:right-8 md:-right-4 lg:-right-12 bottom-4 md:bottom-10 w-32 md:w-48 opacity-90 z-20 pointer-events-none" />
 
         {/* Title */}
         <div className="text-center mb-12 sm:mb-20 relative z-10">
@@ -51,7 +51,7 @@ export default function WhyUsSection() {
         </div>
 
         {/* Cards */}
-        <div className="flex flex-col lg:flex-row gap-2 justify-center items-center lg:items-stretch w-full max-w-5xl mx-auto">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 justify-center items-center lg:items-stretch w-full mx-auto">
           {cardConfig.map((card, index) => (
             <div
               key={index}

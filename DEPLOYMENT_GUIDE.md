@@ -25,40 +25,34 @@ This guide details how to build and deploy the Harrigan Academy website to Beget
 >
 > **Static files in `dist/assets/images/` and `dist/assets/icons/` DO NOT change** unless you explicitly replace source images in `public/assets/`. These are already uploaded to Beget and must NOT be re-uploaded unless images have changed — it wastes time and risks overwriting correctly placed files.
 
-## 4. Quick Deploy (Code Only — Use This Every Time)
-
-After making code changes, run this script. It builds the project and uploads **only the 3 changed files**, skipping images and icons entirely:
+## 4. Quick Deploy to Beget (Use This Every Time)
 
 ```powershell
-# Run from: d:\Harrigan Academy Site\harrigan-academy\
-powershell.exe -ExecutionPolicy Bypass -File "scripts\deploy-quick.ps1"
+.\scripts\deploy-beget.ps1
 ```
 
-Or manually:
+The script does the following in order:
+1. **Builds** the project (`npm run build`)
+2. **Deletes** all old `.js` and `.css` files from the remote `assets/` folder via FTP
+3. **Uploads** the 3 new files: `index.html`, new `.js`, new `.css`
+4. **Skips** images and icons entirely
+
+> [!IMPORTANT]
+> Always use this script instead of uploading manually. Vite generates a new filename hash on every build — if the old files are not deleted first and the new ones don't upload, `index.html` ends up referencing files that don't exist, breaking all CSS and JS on the live site.
+
+## 5. Push to GitHub
 
 ```powershell
-$ftpUser = "cta102en"
-$ftpPass = "Thomasabraham@1"
-$ftpServer = "cta1022m.beget.tech"
-$remoteRoot = "cta102en.beget.tech/public_html"
-$dist = ".\dist"
-
-npm run build
-
-# Upload index.html
-curl.exe -s -T "$dist\index.html" "ftp://$ftpServer/$remoteRoot/index.html" -u "${ftpUser}:${ftpPass}"
-
-# Upload JS and CSS only (NOT images or icons)
-Get-ChildItem "$dist\assets" -File | Where-Object { $_.Extension -eq ".js" -or $_.Extension -eq ".css" } | ForEach-Object {
-    curl.exe -s -T "$($_.FullName)" "ftp://$ftpServer/$remoteRoot/assets/$($_.Name)" --ftp-create-dirs -u "${ftpUser}:${ftpPass}"
-}
+.\scripts\push-github.ps1
 ```
 
-## 5. Full Deploy (Images Changed — Rarely Needed)
+Shows changed files, prompts for a commit message, then stages, commits, and pushes to `origin/master`.
+
+## 6. Full Deploy (Images Changed — Rarely Needed)
 
 Only do a full deploy if you have **added or replaced image files** in `public/assets/`. Use the recursive method from the Beget support docs or upload manually via the Beget File Manager at https://sprutio.beget.com/.
 
-## 6. Troubleshooting
-- **Blank page**: Make sure `vite.config.js` has `base: './'`. Without this, asset paths use `/` (absolute) which breaks on Beget's subfolder structure.
-- **Old CSS/JS still loading**: The browser cached the old file. Hard-refresh with `Ctrl+Shift+R`. The new filenames (with hash) force cache-busting automatically.
+## 7. Troubleshooting
+- **Blank page or no CSS**: Run `deploy-beget.ps1` again. This usually means index.html was updated but the new JS/CSS didn't finish uploading. The script deletes old files and re-uploads so hashes always match.
+- **Old CSS/JS still loading after deploy**: Hard-refresh with `Ctrl+Shift+R`. Vite's hashed filenames bust the CDN cache automatically, but your local browser may still have the old file cached.
 - **Not Secure Warning**: SSL needs to be activated in the Beget Control Panel under "SSL Certificates" (Let's Encrypt).

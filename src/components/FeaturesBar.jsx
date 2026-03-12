@@ -16,7 +16,7 @@ export default function FeaturesBar() {
       style={{
         marginTop: '-8px',
         zIndex: 10,
-        backgroundImage:    'url(/assets/images/wavy-cloud-border.png)',
+        backgroundImage:    'url(/assets/images/wavy-cloud-border.webp)',
         backgroundRepeat:   'repeat-x',
         backgroundSize:     'auto 100%',
         backgroundPosition: 'center',
@@ -24,7 +24,7 @@ export default function FeaturesBar() {
         willChange: 'transform',
       }}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 w-full">
+      <div className="max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20">
         <div
           className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-5 py-4 w-full"
           style={{ transform: 'translateY(-8px)' }}

@@ -9,7 +9,7 @@ export default function ContactSection() {
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: 'url(/assets/images/world-map.png)',
+          backgroundImage: 'url(/assets/images/world-map.webp)',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
           backgroundSize: 'cover',
@@ -20,7 +20,7 @@ export default function ContactSection() {
       {/* Dark overlay */}
       <div className="absolute inset-0" style={{ backgroundColor: 'rgba(80, 15, 100, 0.88)' }} />
 
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 sm:px-12 lg:px-20">
+      <div className="relative z-10 max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
 
           {/* Left — contact form */}

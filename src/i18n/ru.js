@@ -78,6 +78,10 @@ const ru = {
       contact: 'Связаться с нами',
     },
   },
+
+  statementBanner: {
+    heading: 'Сосредоточенное внимание. Более быстрый прогресс.', // TODO_RU: review
+  },
 }
 
 export default ru

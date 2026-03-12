@@ -139,6 +139,11 @@ const en = {
       contact:  'Contact Us',
     },
   },
+
+  // ── Statement Banner ───────────────────────────────────────
+  statementBanner: {
+    heading: 'Focused Attention. Faster Progress.',
+  },
 }
 
 export default en

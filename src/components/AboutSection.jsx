@@ -2,48 +2,83 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { useI18n } from '../i18n/index.jsx'
 
 const slideConfig = [
-  { image: '/assets/images/about-1.jpg', alt: 'Teacher in an online class',      bgColor: '#FDF1FE', titleColor: '#A32EA6', textColor: '#6B2E6B' },
-  { image: '/assets/images/about-2.jpg', alt: 'International teachers',           bgColor: '#E6F8F9', titleColor: '#2B8388', textColor: '#2B5E61' },
-  { image: '/assets/images/about-3.jpg', alt: 'Children enjoying learning',       bgColor: '#FEF4E8', titleColor: '#C97746', textColor: '#8B5A2B' },
+  { image: '/assets/images/about-1.webp', alt: 'Teacher in an online class',      bgColor: '#FDF1FE', titleColor: '#A32EA6', textColor: '#6B2E6B' },
+  { image: '/assets/images/about-2.webp', alt: 'International teachers',           bgColor: '#E6F8F9', titleColor: '#2B8388', textColor: '#2B5E61' },
+  { image: '/assets/images/about-3.webp', alt: 'Children enjoying learning',       bgColor: '#FEF4E8', titleColor: '#C97746', textColor: '#8B5A2B' },
 ]
 
 const FADE_MS = 300
+const AUTO_MS = 6000
 
 export default function AboutSection() {
   const { t } = useI18n()
   const [current, setCurrent] = useState(0)
   const [visible, setVisible] = useState(true)
-  const pendingRef = useRef(null)
 
-  const go = useCallback((dir) => {
-    if (pendingRef.current) clearTimeout(pendingRef.current)
-    setVisible(false)
-    pendingRef.current = setTimeout(() => {
-      setCurrent((prev) => (prev + dir + slideConfig.length) % slideConfig.length)
-      setVisible(true)
-      pendingRef.current = null
-    }, FADE_MS)
-  }, [])
+  const fadeRef    = useRef(null)   // setTimeout for cross-fade
+  const intervalRef = useRef(null)  // setInterval for auto-scroll
+  const isPausedRef = useRef(false) // hover pause flag
 
-  const goTo = useCallback((index) => {
-    if (pendingRef.current) clearTimeout(pendingRef.current)
+  // ── Core slide change (handles fade) ────────────────────────────────────────
+  const changeTo = useCallback((index) => {
+    if (fadeRef.current) clearTimeout(fadeRef.current)
     setVisible(false)
-    pendingRef.current = setTimeout(() => {
+    fadeRef.current = setTimeout(() => {
       setCurrent(index)
       setVisible(true)
-      pendingRef.current = null
+      fadeRef.current = null
     }, FADE_MS)
   }, [])
 
-  useEffect(() => {
-    const timer = setInterval(() => go(1), 6000)
-    return () => {
-      clearInterval(timer)
-      if (pendingRef.current) clearTimeout(pendingRef.current)
-    }
-  }, [go])
+  // ── Start / restart the auto-scroll interval ─────────────────────────────────
+  const startTimer = useCallback(() => {
+    clearInterval(intervalRef.current)
+    if (isPausedRef.current) return
+    intervalRef.current = setInterval(() => {
+      setCurrent(prev => {
+        const next = (prev + 1) % slideConfig.length
+        changeTo(next)
+        return prev // changeTo handles the actual state update
+      })
+    }, AUTO_MS)
+  }, [changeTo])
 
-  const slide = slideConfig[current]
+  // Boot the timer once
+  useEffect(() => {
+    startTimer()
+    return () => {
+      clearInterval(intervalRef.current)
+      if (fadeRef.current) clearTimeout(fadeRef.current)
+    }
+  }, [startTimer])
+
+  // ── Manual navigation — clears + resets timer ─────────────────────────────
+  const go = useCallback((dir) => {
+    setCurrent(prev => {
+      const next = (prev + dir + slideConfig.length) % slideConfig.length
+      changeTo(next)
+      return prev
+    })
+    startTimer() // reset from zero
+  }, [changeTo, startTimer])
+
+  const goTo = useCallback((index) => {
+    changeTo(index)
+    startTimer() // reset from zero
+  }, [changeTo, startTimer])
+
+  // ── Hover pause / resume ──────────────────────────────────────────────────
+  const handleMouseEnter = useCallback(() => {
+    isPausedRef.current = true
+    clearInterval(intervalRef.current)
+  }, [])
+
+  const handleMouseLeave = useCallback(() => {
+    isPausedRef.current = false
+    startTimer()
+  }, [startTimer])
+
+  const slide     = slideConfig[current]
   const slideText = t.about.slides[current]
 
   return (
@@ -55,14 +90,23 @@ export default function AboutSection() {
         ))}
       </div>
 
-      <div className="max-w-7xl mx-auto w-full px-6 sm:px-12 lg:px-20">
+      <div className="max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20">
         <h2 className="text-center text-brand-section-title font-brand-section-title text-brand-purple mb-10 sm:mb-14">
           {t.about.sectionTitle}
         </h2>
 
-        <div className="relative flex items-center gap-4">
+        {/* Carousel — pause on hover */}
+        <div
+          className="relative flex items-center gap-4"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           {/* Left arrow */}
-          <button onClick={() => go(-1)} aria-label="Previous slide" className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-md flex items-center justify-center text-brand-purple hover:bg-brand-purple hover:text-white transition-colors duration-300 z-10">
+          <button
+            onClick={() => go(-1)}
+            aria-label="Previous slide"
+            className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-md flex items-center justify-center text-brand-purple hover:bg-brand-purple hover:text-white transition-colors duration-300 z-10"
+          >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"/>
             </svg>
@@ -97,7 +141,11 @@ export default function AboutSection() {
           </div>
 
           {/* Right arrow */}
-          <button onClick={() => go(1)} aria-label="Next slide" className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-md flex items-center justify-center text-brand-purple hover:bg-brand-purple hover:text-white transition-colors duration-300 z-10">
+          <button
+            onClick={() => go(1)}
+            aria-label="Next slide"
+            className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-md flex items-center justify-center text-brand-purple hover:bg-brand-purple hover:text-white transition-colors duration-300 z-10"
+          >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"/>
             </svg>

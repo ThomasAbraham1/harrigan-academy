@@ -49,7 +49,7 @@
 
 /* Wavy cloud divider */
 .wavy-top {
-  background-image: url('/assets/images/wavy-cloud-border.png');
+  background-image: url('/assets/images/wavy-cloud-border.webp');
   background-repeat: repeat-x;
   background-size: auto 100%;
   width: 100%;
@@ -60,7 +60,7 @@
 }
 
 .wavy-bottom {
-  background-image: url('/assets/images/wavy-cloud-border.png');
+  background-image: url('/assets/images/wavy-cloud-border.webp');
   background-repeat: repeat-x;
   background-size: auto 100%;
   width: 100%;
