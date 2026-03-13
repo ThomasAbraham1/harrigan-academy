@@ -69,14 +69,14 @@ export default function Navbar() {
       style={{ backgroundColor: '#904ba2' }}
     >
       <div className="max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20">
-        <div className="flex items-center justify-between h-16 sm:h-20">
+        <div className="flex items-center justify-between h-20 sm:h-24">
 
           {/* Logo — goes home */}
           <Link to={`/${activeLang}/`} className="flex-shrink-0">
             <img 
               src="/assets/icons/logo.png" 
               alt={t.nav.logo} 
-              className="h-12 sm:h-16 w-auto object-contain"
+              className="h-14 sm:h-20 w-auto object-contain"
             />
           </Link>
 
