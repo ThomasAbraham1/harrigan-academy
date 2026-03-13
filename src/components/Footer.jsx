@@ -52,7 +52,7 @@ export default function Footer() {
           <img 
             src="/assets/icons/logo.png" 
             alt={t.nav.logo} 
-            className="h-8 sm:h-10 w-auto object-contain brightness-0 invert"
+            className="h-14 sm:h-20 w-auto object-contain brightness-0 invert"
           />
           <p className="text-white/65 font-montserrat text-sm leading-relaxed">{t.footer.brandDescription}</p>
           <div className="flex flex-wrap gap-2 mt-1">

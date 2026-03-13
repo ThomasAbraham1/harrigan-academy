@@ -76,7 +76,7 @@ export default function Navbar() {
             <img 
               src="/assets/icons/logo.png" 
               alt={t.nav.logo} 
-              className="h-8 sm:h-10 w-auto object-contain"
+              className="h-12 sm:h-16 w-auto object-contain"
             />
           </Link>
 
