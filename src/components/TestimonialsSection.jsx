@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useI18n } from '../i18n/index.jsx'
+import { useSwipe } from '../hooks/useSwipe.js'
 
 const SIZES = ['short', 'short', 'short', 'short', 'long', 'long', 'long', 'long']
 
@@ -49,10 +50,15 @@ export default function TestimonialsSection() {
     setCurrent((prev) => (prev + direction + groups.length) % groups.length)
   }
 
+  const swipeHandlers = useSwipe({
+    onSwipeLeft: () => go(1),
+    onSwipeRight: () => go(-1),
+  })
+
   const group = groups[current] || { type: 'single', items: [] }
 
   return (
-    <section id="testimonials" className="relative w-full py-10 sm:py-20 overflow-hidden" style={{ backgroundColor: '#DCF0ED' }}>
+    <section id="testimonials" className="relative w-full py-10 sm:py-20 overflow-hidden scroll-mt-20 sm:scroll-mt-24" style={{ backgroundColor: '#DCF0ED' }}>
       {/* Decorative circles — box-shadow instead of filter:blur for performance */}
       <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full opacity-30" style={{ backgroundColor: '#904ba2', boxShadow: '0 0 80px 40px #904ba2' }} />
       <div className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full opacity-30" style={{ backgroundColor: '#904ba2', boxShadow: '0 0 80px 40px #904ba2' }} />
@@ -65,16 +71,21 @@ export default function TestimonialsSection() {
           </h2>
         </div>
 
-        <div className="flex items-center gap-4 sm:gap-6">
+        <div className="relative group">
           {/* Left arrow */}
-          <button onClick={() => go(-1)} aria-label="Previous testimonial" className="flex-shrink-0 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white shadow-md flex items-center justify-center text-brand-purple hover:bg-brand-purple hover:text-white transition-all duration-300 hover:scale-105">
+          <button 
+            onClick={() => go(-1)} 
+            aria-label="Previous testimonial" 
+            className="absolute left-0 top-1/2 -translate-y-1/2 -ml-3 sm:-ml-6 lg:-ml-10 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full bg-white shadow-md flex items-center justify-center text-brand-purple hover:bg-brand-purple hover:text-white transition-all duration-300 active:scale-95 z-10"
+          >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"/></svg>
           </button>
 
           {/* Cards */}
           <div
             key={current}
-            className={`flex-1 flex flex-col sm:${group.type === 'pair' ? 'flex-row' : 'flex-col'} gap-4 sm:gap-6 animate-[fade-in-up_0.4s_ease-out]`}
+            className={`flex-1 flex flex-col sm:${group.type === 'pair' ? 'flex-row' : 'flex-col'} gap-4 sm:gap-6 animate-[fade-in-up_0.4s_ease-out] px-4 sm:px-0`}
+            {...swipeHandlers}
           >
             {group.type === 'single' ? (
               group.items[0] ? <TestimonialCard testimonial={group.items[0]} isWide /> : null
@@ -84,10 +95,15 @@ export default function TestimonialsSection() {
           </div>
 
           {/* Right arrow */}
-          <button onClick={() => go(1)} aria-label="Next testimonial" className="flex-shrink-0 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white shadow-md flex items-center justify-center text-brand-purple hover:bg-brand-purple hover:text-white transition-all duration-300 hover:scale-105">
+          <button 
+            onClick={() => go(1)} 
+            aria-label="Next testimonial" 
+            className="absolute right-0 top-1/2 -translate-y-1/2 -mr-3 sm:-mr-6 lg:-mr-10 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full bg-white shadow-md flex items-center justify-center text-brand-purple hover:bg-brand-purple hover:text-white transition-all duration-300 active:scale-95 z-10"
+          >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"/></svg>
           </button>
         </div>
+
 
         <div className="flex justify-center gap-2 mt-8">
           {groups.map((_, i) => (

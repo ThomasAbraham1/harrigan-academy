@@ -13,7 +13,7 @@ export default {
         }
       },
       colors: {
-        'brand-purple': '#904ba2',
+        'brand-purple': '#904ba2ff',
         'brand-purple-dark': '#7a3f8a',
         'brand-purple-light': '#a661b7',
         'brand-purple-hero': '#904ba2',
@@ -26,13 +26,14 @@ export default {
         sans: ['Montserrat', 'sans-serif'],
       },
       fontSize: {
-        'brand-logo': ['1.5rem', { lineHeight: '1.2' }], // 24px
-        'hero-h': ['clamp(1.75rem, 5vw, 2rem)', { lineHeight: '1.12' }], // 28px -> 32px
-        'hero-p': ['clamp(1rem, 2.5vw, 1.125rem)', { lineHeight: '1.6' }], // 16px -> 18px
-        'section-h': ['1.9rem', { lineHeight: '1.2' }], 
-        'section-p': ['1rem', { lineHeight: '1.6' }],    // 16px
-        'section-p-large': ['1.125rem', { lineHeight: '1.6' }], // 18px
-        'hero-cta': ['clamp(1rem, 2.5vw, 1.125rem)', { lineHeight: '1.2' }],     // 24px
+        'brand-logo': ['clamp(1.25rem, 3vw, 1.5rem)', { lineHeight: '1.2' }], 
+        'hero-h': ['clamp(1.75rem, 5vw, 2rem)', { lineHeight: '1.12' }], 
+        'hero-p': ['clamp(1rem, 2.5vw, 1.125rem)', { lineHeight: '1.6' }], 
+        'section-h': ['clamp(1.5rem, 4.5vw, 1.9rem)', { lineHeight: '1.2' }], 
+        'section-h-large': ['clamp(1.5rem, 4.5vw, 2.5rem)', { lineHeight: '1.2' }], 
+        'section-p': ['clamp(0.875rem, 2vw, 1rem)', { lineHeight: '1.6' }], 
+        'section-p-large': ['clamp(1rem, 2.5vw, 1.125rem)', { lineHeight: '1.6' }], 
+        'hero-cta': ['clamp(1rem, 2.5vw, 1.125rem)', { lineHeight: '1.2' }], 
       },
       fontWeight: {
         'brand-logo': '700',

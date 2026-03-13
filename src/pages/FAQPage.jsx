@@ -123,7 +123,7 @@ export default function FAQPage() {
             </div>
 
             {/* Still have questions CTA */}
-            <div className="mt-10 text-center p-8 sm:p-10 rounded-2xl border-2 border-brand-purple/20 bg-white">
+            {/* <div className="mt-10 text-center p-8 sm:p-10 rounded-2xl border-2 border-brand-purple/20 bg-white">
               <h3 className="text-section-h font-antique font-section-h text-brand-purple mb-3">
                 Still have questions?
               </h3>
@@ -137,7 +137,7 @@ export default function FAQPage() {
               >
                 Contact Us
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

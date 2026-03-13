@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, useMemo } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import en from './en.js'
 import ru from './ru.js'
@@ -39,12 +39,12 @@ export function I18nProvider({ children }) {
     navigate(`/${newLang}${suffix}`)
   }
 
-  const value = useMemo(() => ({
+  const value = {
     locale,
     setLocale,
     locales: LOCALES,
     t: LOCALES[locale].strings,
-  }), [locale])
+  }
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>
 }

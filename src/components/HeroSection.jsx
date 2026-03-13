@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback, useRef, memo } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { useI18n } from '../i18n/index.jsx'
+import { useSwipe } from '../hooks/useSwipe.js'
 
 const slideConfig = [
   {
@@ -52,7 +53,7 @@ const slideConfig = [
   },
 ]
 
-function HeroSection() {
+export default function HeroSection() {
   const { t } = useI18n()
   const [current, setCurrent] = useState(0)
 
@@ -77,9 +78,16 @@ function HeroSection() {
 
   const slide = slideConfig[current]
 
+  const swipeHandlers = useSwipe({
+    onSwipeLeft: () => goTo((current + 1) % slideConfig.length),
+    onSwipeRight: () => goTo((current - 1 + slideConfig.length) % slideConfig.length),
+  })
+
   return (
     <section
-      className="relative w-full overflow-hidden bg-white min-h-[160vw] sm:min-h-0 sm:aspect-[4/3] md:aspect-video lg:aspect-auto lg:h-[min(90vw,720px)] lg:min-h-[320px]"
+      id="home"
+      className="relative w-full overflow-hidden bg-white min-h-[165vw] sm:min-h-0 sm:aspect-[4/3] md:aspect-video lg:aspect-auto lg:h-[min(90vw,720px)] lg:min-h-[320px] scroll-mt-16 sm:scroll-mt-20"
+      {...swipeHandlers}
     >
       {/* Full-bleed background slides — picture element for responsive images */}
       {slideConfig.map((s, i) => (
@@ -97,10 +105,7 @@ function HeroSection() {
                 src={s.image}
                 alt={s.alt}
                 decoding="async"
-                loading={i === 0 ? "eager" : "lazy"}
-                fetchPriority={i === 0 ? "high" : "low"}
                 className="w-full h-full object-cover object-top"
-                style={{ aspectRatio: '16/9' }}
               />
             </picture>
             
@@ -131,7 +136,7 @@ function HeroSection() {
           <div
             key={current}
             className={`
-              w-full sm:w-[85%] md:w-1/2 lg:w-1/2
+              w-full sm:w-[85%] md:w-1/2 lg:w-1/2 mb-8
               flex flex-col items-start gap-3 sm:gap-4 lg:gap-6
               text-left sm:text-left
               animate-[fade-in-up_0.6s_ease-out]
@@ -150,7 +155,7 @@ function HeroSection() {
 
             <a
               href="#contact"
-              className="inline-flex items-center px-6 py-3 rounded-full font-montserrat font-hero-cta text-hero-cta text-white transition-transform duration-300 hover:scale-105 mt-2 sm:mt-4 bg-brand-purple"
+              className="inline-flex items-center px-6 py-3 rounded-full font-montserrat font-hero-p text-hero-p text-white transition-transform duration-300 hover:scale-105 sm:mt-0 bg-brand-purple"
             >
               {t.hero.cta}
             </a>
@@ -177,5 +182,3 @@ function HeroSection() {
     </section>
   )
 }
-
-export default memo(HeroSection)

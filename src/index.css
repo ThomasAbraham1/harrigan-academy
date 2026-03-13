@@ -5,14 +5,23 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    box-sizing: border-box;
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+    /* Modern viewport height to avoid mobile UI jumpiness */
+    min-height: 100dvh;
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
+  }
+
+  * {
+    box-sizing: border-box;
   }
 }
 
@@ -74,15 +83,21 @@
   @apply block w-6 h-0.5 bg-white rounded transition-all duration-300;
 }
 
-/* Smooth scrolling and anchor offsets */
+/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Match Navbar height */
 }
 
-/* Base performance boosts */
-body {
-  overscroll-behavior-y: none; /* Prevents bounce jank on some browsers */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Parallax background stable for mobile */
+.parallax-bg {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  will-change: transform;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .parallax-bg {
+    background-attachment: scroll;
+  }
 }

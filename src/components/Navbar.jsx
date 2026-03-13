@@ -50,18 +50,9 @@ export default function Navbar() {
   ]
 
   useEffect(() => {
-    // Highly efficient: only triggers when crossing the 10px mark
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setScrolled(!entry.isIntersecting)
-      },
-      { threshold: 0, rootMargin: '-10px 0px 0px 0px' }
-    )
-
-    const sentinel = document.getElementById('scroll-sentinel')
-    if (sentinel) observer.observe(sentinel)
-
-    return () => observer.disconnect()
+    const handleScroll = () => setScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const closeMobile = useCallback(() => setMobileOpen(false), [])

@@ -20,23 +20,24 @@ export default function FeaturesBar() {
         backgroundRepeat:   'repeat-x',
         backgroundSize:     'auto 100%',
         backgroundPosition: 'center',
-        transform: 'translate3d(0,0,0)',
+        transform: 'translateZ(0)',
+        willChange: 'transform',
       }}
     >
       <div className="max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20">
         <div
-          className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-5 py-4 w-full"
+          className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-5 py-4 w-fit mx-auto"
           style={{ transform: 'translateY(-8px)' }}
         >
           {iconConfig.map((feature) => (
-            <div key={feature.key} className="flex items-center gap-2 justify-self-center sm:justify-self-start sm:gap-3 group">
+            <div key={feature.key} className="flex items-center gap-2 sm:gap-3 group">
               <img
                 src={feature.icon}
                 alt={feature.alt}
                 className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex-shrink-0 object-contain transition-transform duration-300 group-hover:scale-110"
               />
               <p
-                className="text-sm sm:text-base font-montserrat font-bold"
+                className="text-sm sm:text-base font-montserrat font-section-p"
                 style={{ color: '#904ba2', whiteSpace: 'pre-line' }}
               >
                 {t.features[feature.key]}
