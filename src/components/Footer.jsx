@@ -1,4 +1,6 @@
+import { Link, useParams } from 'react-router-dom'
 import { useI18n } from '../i18n/index.jsx'
+import { useScrollToSection } from '../hooks/useScrollToSection.js'
 
 const socials = [
   { label: 'Facebook', href: '#', icon: <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" /></svg> },
@@ -10,13 +12,18 @@ const socials = [
 
 export default function Footer() {
   const { t } = useI18n()
+  const { lang = 'en' } = useParams()
+  const scrollToSection = useScrollToSection()
 
-  const quickLinks = [
-    { label: t.footer.links.whyUs, href: '#why-us' },
-    { label: t.footer.links.about, href: '#about' },
-    { label: t.footer.links.teachers, href: '#teachers' },
-    { label: t.footer.links.faq, href: '#faq' },
-    { label: t.footer.links.contact, href: '#contact' },
+  const scrollLinks = [
+    { label: t.footer.links.whyUs, sectionId: 'why-us' },
+    { label: t.footer.links.about, sectionId: 'about' },
+    { label: t.footer.links.contact, sectionId: 'contact' },
+  ]
+
+  const pageLinks = [
+    { label: t.footer.links.teachers, to: `/${lang}/teachers` },
+    { label: t.footer.links.faq, to: `/${lang}/faq` },
   ]
 
   return (
@@ -68,11 +75,24 @@ export default function Footer() {
         <div>
           <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-5">{t.footer.quickLinksLabel}</p>
           <ul className="flex flex-col gap-3">
-            {quickLinks.map((link) => (
-              <li key={link.label}>
-                <a href={link.href} className="text-white/75 hover:text-white hover:translate-x-1 inline-block transition-all duration-200 text-sm">
+            {scrollLinks.map((link) => (
+              <li key={link.sectionId}>
+                <button
+                  onClick={() => scrollToSection(link.sectionId)}
+                  className="text-white/75 hover:text-white hover:translate-x-1 inline-block transition-all duration-200 text-sm bg-transparent border-0 p-0 cursor-pointer"
+                >
                   {link.label}
-                </a>
+                </button>
+              </li>
+            ))}
+            {pageLinks.map((link) => (
+              <li key={link.to}>
+                <Link
+                  to={link.to}
+                  className="text-white/75 hover:text-white hover:translate-x-1 inline-block transition-all duration-200 text-sm"
+                >
+                  {link.label}
+                </Link>
               </li>
             ))}
           </ul>

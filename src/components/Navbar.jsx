@@ -2,36 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { Link, useParams, useNavigate, useLocation } from 'react-router-dom'
 import { useI18n } from '../i18n/index.jsx'
 
-// Scroll to a section by id without leaving a # in the URL.
-// If we're not on the home page, navigate home first and carry the
-// section id in router state so HomePage can scroll after mounting.
-function useScrollToSection() {
-  const navigate   = useNavigate()
-  const { lang }   = useParams()
-  const activeLang = lang || 'en'
-  const location   = useLocation()
-
-  return useCallback((sectionId, isMobile = false) => {
-    const isHome = location.pathname === `/${activeLang}/` ||
-                   location.pathname === `/${activeLang}`
-    
-    if (isHome) {
-      // If mobile, wait for drawer to close before calculation
-      const delay = isMobile ? 350 : 0 
-      
-      setTimeout(() => {
-        const el = document.getElementById(sectionId)
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-          window.history.replaceState(null, '', window.location.pathname)
-        }
-      }, delay)
-    } else {
-      // Navigate home and pass the target section in router state
-      navigate(`/${activeLang}/`, { state: { scrollTo: sectionId } })
-    }
-  }, [navigate, activeLang, location.pathname])
-}
+import { useScrollToSection } from '../hooks/useScrollToSection.js'
 
 export default function Navbar() {
   const { t, locale, setLocale, locales } = useI18n()
