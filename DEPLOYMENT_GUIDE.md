@@ -46,7 +46,7 @@ The script does the following in order:
 .\scripts\push-github.ps1
 ```
 
-Shows changed files, prompts for a commit message, then stages, commits, and pushes to `origin/master`.
+Shows changed files, prompts for a commit message, then stages, commits, and pushes to `origin/main`.
 
 ## 6. Full Deploy (Images Changed — Rarely Needed)
 

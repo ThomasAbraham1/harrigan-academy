@@ -4,45 +4,6 @@ import { useI18n } from '../i18n/index.jsx'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
-const faqs = [
-  {
-    q: 'What age groups do you teach?',
-    a: 'We welcome students of all ages — from young children (age 4+) to adults. Our lessons are tailored to each age group with appropriate materials and teaching techniques.',
-  },
-  {
-    q: 'How are the classes conducted?',
-    a: 'All classes are conducted live online via video call. Our teachers use interactive tools, whiteboards, games, and visual aids to make lessons engaging and effective.',
-  },
-  {
-    q: 'What level of English do I need to start?',
-    a: 'Absolutely no experience required! We welcome complete beginners and work with all levels from beginner to advanced. Your teacher will adapt the lesson to your current level.',
-  },
-  {
-    q: 'How long are the lessons?',
-    a: 'Standard lessons are 50 minutes long. We also offer 25-minute trial lessons for new students to experience our teaching style before committing to a full course.',
-  },
-  {
-    q: 'Can I choose my own teacher?',
-    a: 'Yes! You can browse our team of teachers and choose the one that best fits your goals, schedule, and learning style. We also offer a free consultation to help match you.',
-  },
-  {
-    q: 'How much do lessons cost?',
-    a: 'Pricing varies based on the teacher and lesson package selected. Please contact us for a personalised quote and information about our current packages and discounts.',
-  },
-  {
-    q: 'What happens if I need to cancel a lesson?',
-    a: 'We ask for at least 24 hours notice to cancel or reschedule a lesson. Cancellations within 24 hours may not be eligible for a refund depending on your package.',
-  },
-  {
-    q: 'Do you offer group classes?',
-    a: 'Currently we specialise in one-on-one lessons which gives students maximum attention and faster progress. Group classes may be available — contact us for details.',
-  },
-  {
-    q: 'Are your teachers native English speakers?',
-    a: 'Our teachers include native English speakers as well as highly proficient non-native speakers who are Cambridge certified and have years of international teaching experience.',
-  },
-]
-
 function FAQItem({ q, a }) {
   const [open, setOpen] = useState(false)
 
@@ -53,7 +14,7 @@ function FAQItem({ q, a }) {
         onClick={() => setOpen(!open)}
         aria-expanded={open}
       >
-        <span className="text-brand-logo font-montserrat font-bold text-gray-900 group-hover:text-brand-purple transition-colors">
+        <span className="text-section-p-large font-montserrat font-bold text-gray-900 group-hover:text-brand-purple transition-colors">
           {q}
         </span>
         <span
@@ -82,6 +43,9 @@ export default function FAQPage() {
   const { lang } = useParams()
   const activeLang = lang || 'en'
 
+  // Safety check for localized content
+  const faqs = t.faqPage?.items || []
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Navbar />
@@ -101,13 +65,13 @@ export default function FAQPage() {
         </svg>
         <div className="relative z-10 max-w-3xl mx-auto">
           <p className="text-white text-sm font-montserrat font-bold uppercase tracking-widest mb-3">
-            Questions
+            {t.nav.faq}
           </p>
           <h1 className="text-hero-h font-antique font-hero-h text-white leading-tight mb-4">
-            Frequently Asked Questions
+            {t.faqPage?.title || 'Frequently Asked Questions'}
           </h1>
           <p className="text-white/80 font-montserrat font-hero-p text-hero-p max-w-xl mx-auto">
-            Everything you need to know about Harrigan Academy. Can't find your answer? Contact us directly.
+            {t.faqPage?.subtitle || "Everything you need to know about Harrigan Academy. Can't find your answer? Contact us directly."}
           </p>
         </div>
       </div>
@@ -123,21 +87,27 @@ export default function FAQPage() {
             </div>
 
             {/* Still have questions CTA */}
-            {/* <div className="mt-10 text-center p-8 sm:p-10 rounded-2xl border-2 border-brand-purple/20 bg-white">
+            <div className="mt-10 text-center p-8 sm:p-10 rounded-2xl border-2 border-brand-purple/20 bg-white">
               <h3 className="text-section-h font-antique font-section-h text-brand-purple mb-3">
-                Still have questions?
+                {activeLang === 'en' ? 'Still have questions?' :
+                  activeLang === 'ru' ? 'Остались вопросы?' :
+                    activeLang === 'zh' ? '还有疑问吗？' :
+                      'ご不明な点はありますか？'}
               </h3>
               <p className="text-section-p text-gray-600 font-montserrat font-section-p mb-6 max-w-md mx-auto">
-                We're happy to help. Reach out and we'll get back to you as soon as possible.
+                {activeLang === 'en' ? "We're happy to help. Reach out and we'll get back to you as soon as possible." :
+                  activeLang === 'ru' ? 'Мы будем рады помочь. Свяжитесь с нами, и мы ответим вам как можно скорее.' :
+                    activeLang === 'zh' ? '我们很乐意提供帮助。联系我们，我们会尽快给您回复。' :
+                      'お気軽にお問い合わせください。できるだけ早く返信いたします。'}
               </p>
               <Link
                 to={`/${activeLang}/`}
                 onClick={() => setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100)}
                 className="inline-flex items-center px-8 py-3 rounded-full bg-brand-purple text-white font-montserrat font-hero-cta text-hero-cta hover:bg-brand-purple-dark hover:scale-105 transition-all duration-300"
               >
-                Contact Us
+                {t.nav.contact}
               </Link>
-            </div> */}
+            </div>
           </div>
         </div>
       </section>

@@ -6,12 +6,12 @@
 const en = {
   // ── Navbar ──────────────────────────────────────────────
   nav: {
-    logo:        'Harrigan Academy',
-    whyUs:       'Why Us',
-    about:       'About Our Program',
-    teachers:    'Our Teachers',
-    faq:         'FAQ',
-    contact:     'Contact Us',
+    logo: 'Harrigan Academy',
+    whyUs: 'Why Us',
+    about: 'About Our Program',
+    teachers: 'Our Teachers',
+    faq: 'FAQ',
+    contact: 'Contact Us',
     langAriaLabel: 'Switch language',
   },
 
@@ -20,23 +20,23 @@ const en = {
     cta: 'Start Learning Today',
     slides: [
       {
-        title:    'Fun Online Classes to improve your English!',
+        title: 'Fun Online Classes to improve your English!',
         subtitle: 'With experienced international teachers who care about your progress.',
       },
       {
-        title:    'Personal 1:1 Lessons designed just for you',
+        title: 'Personal 1:1 Lessons designed just for you',
         subtitle: 'Learn at your own pace with a teacher focused entirely on your progress',
       },
       {
-        title:    'Learn Together in Small Groups',
+        title: 'Learn Together in Small Groups',
         subtitle: 'Interactive classes with batches of 5–6 students',
       },
       {
-        title:    'Teachers from Around the World',
+        title: 'Teachers from Around the World',
         subtitle: 'Educators who bring global and multilingual perspective',
       },
       {
-        title:    'Learning That Feels Natural',
+        title: 'Learning That Feels Natural',
         subtitle: 'Flexible classes that fit easily into your daily routine',
       },
     ],
@@ -44,10 +44,10 @@ const en = {
 
   // ── Features Bar ─────────────────────────────────────────
   features: {
-    virtualClasses:     'Live Virtual Classes',
+    virtualClasses: 'Live Virtual Classes',
     internationalTeachers: 'International Teachers',
-    ageRanges:          'For all Age Ranges',
-    anytime:            'Learn Anytime, Anywhere',
+    ageRanges: 'For all Age Ranges',
+    anytime: 'Learn Anytime, Anywhere',
   },
 
   // ── Why Us Section ───────────────────────────────────────
@@ -55,15 +55,15 @@ const en = {
     sectionTitle: 'Why Students Love Harrigan Academy',
     cards: [
       {
-        title:       'Learn with Support',
+        title: 'Learn with Support',
         description: 'We use gestures, viusals, & step-by-step promps so students learn naturally',
       },
       {
-        title:       'Speaking-first Routine',
+        title: 'Speaking-first Routine',
         description: 'Students repeat, respond and role-play to build confident speaking skills.',
       },
       {
-        title:       'Play-based learning',
+        title: 'Play-based learning',
         description: 'Interactive stories, games, songs and conversations make learning fun!',
       },
     ],
@@ -75,62 +75,62 @@ const en = {
     slides: [
       {
         title: 'Full Immersion',
-        body:  'Our teachers speak only English, so children learn to think and speak while immersed in an English-language learning environment. This helps them concentrate and achieve better results.',
+        body: 'Our teachers speak only English, so children learn to think and speak while immersed in an English-language learning environment. This helps them concentrate and achieve better results.',
       },
       {
         title: 'Multi-culture Exposure',
-        body:  'All of our teachers speak several languages ​​and are based around the world. They all grew up in multicultural environments, making it interesting and easy to find common ground.',
+        body: 'All of our teachers speak several languages ​​and are based around the world. They all grew up in multicultural environments, making it interesting and easy to find common ground.',
       },
       {
         title: 'Teaching Methodology',
-        body:  'We use a natural language acquisition method. Through frequent repetition, we gradually increase the complexity of the material. Our students are not afraid to use English. ',
+        body: 'We use a natural language acquisition method. Through frequent repetition, we gradually increase the complexity of the material. Our students are not afraid to use English. ',
       },
     ],
   },
 
   // ── Testimonials Section ──────────────────────────────────
   testimonials: {
-    eyebrow:      'What Parents & Students Say',
+    eyebrow: 'What Parents & Students Say',
     sectionTitle: 'Success Stories From Our Students',
     items: [
       {
-        name:  'Sabina, Mother of Camilla',
-        role:  '',
+        name: 'Sabina, Mother of Camilla',
+        role: '',
         quote: 'My daughter enjoys the lessons very much and looks forward to every class. The teachers are patient and encouraging, and I can already see her becoming more confident when speaking English.',
       },
       {
-        name:  'Julia, Mother of Samuel',
-        role:  '',
+        name: 'Julia, Mother of Samuel',
+        role: '',
         quote: 'The classes have helped my son improve his English skills and feel more comfortable speaking. The lessons are engaging and well organized, and the teachers know how to keep children motivated.',
       },
       {
-        name:  'Elia Gunkin, Father of Pasha',
-        role:  '',
+        name: 'Elia Gunkin, Father of Pasha',
+        role: '',
         quote: "We are very happy with the results. My son has become more confident in English and participates actively in class. The teachers are professional, supportive, and genuinely care about their students' progress.",
       },
       {
-        name:  "Milana's Father, Parent",
-        role:  '',
+        name: "Milana's Father, Parent",
+        role: '',
         quote: 'Mr. John and his wife have been teaching English to my daughter Milana since 2021. Milana really enjoys the lessons. I must say her spoken English has improved significantly during this time. I highly recommend English lessons with John and his wife. 🔥',
       },
       {
-        name:  'Alexandra Kryusova, Irkutsk, Russia — English Teacher',
-        role:  '',
+        name: 'Alexandra Kryusova, Irkutsk, Russia — English Teacher',
+        role: '',
         quote: "This was my first time communicating with a foreign teacher, and at first I felt unsure of my abilities and wondered if I would be able to keep up. But after the very first lesson, those doubts disappeared. I felt a surge of confidence and motivation to improve.\n\nI am very grateful to Mr. John, who truly inspires his students and helps them believe in their abilities. I especially appreciate how he highlights each student's strengths during reflection, which shows how attentive he is to his students. I always look forward to our lessons.",
       },
       {
-        name:  'Elena Povarissova, English Teacher — 30+ Years Experience',
-        role:  '',
+        name: 'Elena Povarissova, English Teacher — 30+ Years Experience',
+        role: '',
         quote: "As a teacher with more than 30 years of experience, I believe that both students and teachers are always learning and improving. Lessons with Mr. John are a wonderful opportunity to develop conversational English while discussing many topics, including teaching methods, in a friendly and supportive atmosphere.\n\nWith his extensive experience working with both adults and children, as well as his ability as a polyglot, I am confident that anyone who joins his classes will greatly benefit from his guidance.",
       },
       {
-        name:  'Denis and Elena, Students',
-        role:  '',
+        name: 'Denis and Elena, Students',
+        role: '',
         quote: "My husband and I are studying with John. My husband has become much more confident in his English — he's amazed at how he's started using more complex phrases and words in class and with other people.\n\nI'm an English teacher myself and I'm studying with John to improve my spoken English. John is always very supportive, gives lots of praise, and takes our interests into account when communicating.",
       },
       {
-        name:  'Marina Mafikova, Parent',
-        role:  '',
+        name: 'Marina Mafikova, Parent',
+        role: '',
         quote: "In today's world, I believe it is vital to communicate with people from different cultures and countries. It's especially important to give children the opportunity to learn foreign languages from an early age, when learning comes most naturally.\n\nFor our family, a real help has been the unique teaching methods of John Harrigan and his wife Keiko. Their course helps children quickly develop spoken language skills through conversations, games, songs, and stories. The friendly atmosphere makes every lesson feel like a fun adventure.",
       },
     ],
@@ -138,30 +138,30 @@ const en = {
 
   // ── Contact Section ────────────────────────────────────────
   contact: {
-    eyebrow:       'Ready to Start?',
-    sectionTitle:  'Get in Touch with Us Today!',
-    formTitle:     'Send Us a Message',
-    labelName:     'Your Name',
-    labelEmail:    'Email Address',
-    labelMessage:  'Your Message',
-    submitButton:  'Send ',
+    eyebrow: 'Ready to Start?',
+    sectionTitle: 'Get in Touch with Us Today!',
+    formTitle: 'Send Us a Message',
+    labelName: 'Your Name',
+    labelEmail: 'Email Address',
+    labelMessage: 'Your Message',
+    submitButton: 'Send ',
   },
 
   // ── Footer ─────────────────────────────────────────────────
   footer: {
-    getInTouch:       'Get in Touch',
-    writeTo:          'Write To Us',
+    getInTouch: 'Get in Touch',
+    writeTo: 'Write To Us',
     brandDescription: 'Fun online English classes for children and adults — with experienced international teachers who care about your progress.',
-    quickLinksLabel:  'Quick LInks',
-    copyright:        '© 2026 Harrigan Academy. All rights reserved.',
-    privacy:          'Privacy Policy',
-    terms:            'Terms of Service',
+    quickLinksLabel: 'Quick LInks',
+    copyright: '© 2026 Harrigan Academy. All rights reserved.',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Service',
     links: {
-      whyUs:    'Why Us',
-      about:    'About Our Program',
+      whyUs: 'Why Us',
+      about: 'About Our Program',
       teachers: 'Our Teachers',
-      faq:      'FAQ',
-      contact:  'Contact Us',
+      faq: 'FAQ',
+      contact: 'Contact Us',
     },
   },
 
@@ -184,7 +184,7 @@ const en = {
         bio: 'Keiko Harrigan has more than 15 years of experience teaching students of different ages and backgrounds. Her lessons focus on building strong language foundations while helping students feel comfortable expressing themselves in English.\n\nShe believes that consistent encouragement and structured practice help students grow in both confidence and communication skills.',
         image: '/assets/images/teachers/keiko.webp',
       },
-  
+
       {
         id: 'naomi',
         name: 'Naomi Aoki',
@@ -226,6 +226,50 @@ const en = {
   // ── Statement Banner ───────────────────────────────────────
   statementBanner: {
     heading: 'Focused Attention. Faster Progress.',
+  },
+
+  // ── FAQ Page ───────────────────────────────────────────────
+  faqPage: {
+    title: 'Frequently Asked Questions',
+    subtitle: 'Everything you need to know about Harrigan Academy. Can\'t find your answer? Contact us directly.',
+    items: [
+      {
+        q: 'How long is one lesson?',
+        a: 'One lesson is 40 minutes.',
+      },
+      {
+        q: 'How much do you charge per lesson?',
+        a: 'Click on the link below to connect to administration for your payment plan. Ask about the price.',
+      },
+      {
+        q: 'How many times a week should I have lessons in order to achieve the best results?',
+        a: 'Twice a week is required to achieve the best results. More is better.',
+      },
+      {
+        q: 'What are the advantages of my child learning another language?',
+        a: 'An opportunity to learn another language besides the mother tongue is by far the most wonderful gift you can give your child. As globalization grows, this will be a key factor in your child\'s success in life.',
+      },
+      {
+        q: 'I\'m an adult, and am not confident of my English (Japanese/Chinese) ability. If I join your lessons, would your teachers help me gain confidence and improve my skills?',
+        a: 'Yes! Our teachers are trained to meet each student individually where they are, and to gently lead each individual to better their skills according to their needs.',
+      },
+      {
+        q: 'How fluent will I become in one year, taking classes twice a week?',
+        a: 'You will be able to communicate with confidence, using short sentences and phrases. You will be able to think in English, without having to translate to your native language.',
+      },
+      {
+        q: 'What is the age range for your classes?',
+        a: 'We accept all ages, young or old. We believe that anyone can learn, regardless of their age, and are ready to help anyone who has the desire and motivation to learn.',
+      },
+      {
+        q: 'How are payments made?',
+        a: 'Payments are made via bank transfer.',
+      },
+      {
+        q: 'Do you offer private lessons or group lessons?',
+        a: 'We offer both private lessons and group lessons. Group lessons consist of up to 5 students in a group. Prices differ accordingly.',
+      },
+    ],
   },
 }
 
