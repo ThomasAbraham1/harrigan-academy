@@ -11,15 +11,21 @@ function useScrollToSection() {
   const activeLang = lang || 'en'
   const location   = useLocation()
 
-  return useCallback((sectionId) => {
+  return useCallback((sectionId, isMobile = false) => {
     const isHome = location.pathname === `/${activeLang}/` ||
                    location.pathname === `/${activeLang}`
+    
     if (isHome) {
-      const el = document.getElementById(sectionId)
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        window.history.replaceState(null, '', window.location.pathname)
-      }
+      // If mobile, wait for drawer to close before calculation
+      const delay = isMobile ? 350 : 0 
+      
+      setTimeout(() => {
+        const el = document.getElementById(sectionId)
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          window.history.replaceState(null, '', window.location.pathname)
+        }
+      }, delay)
     } else {
       // Navigate home and pass the target section in router state
       navigate(`/${activeLang}/`, { state: { scrollTo: sectionId } })
@@ -67,9 +73,11 @@ export default function Navbar() {
 
           {/* Logo — goes home */}
           <Link to={`/${activeLang}/`} className="flex-shrink-0">
-            <span className="text-white text-brand-logo font-antique font-brand-logo">
-              {t.nav.logo}
-            </span>
+            <img 
+              src="/assets/icons/logo.png" 
+              alt={t.nav.logo} 
+              className="h-8 sm:h-10 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -169,7 +177,7 @@ export default function Navbar() {
           {sectionLinks.map((link) => (
             <button
               key={link.sectionId}
-              onClick={() => { scrollToSection(link.sectionId); closeMobile() }}
+              onClick={() => { scrollToSection(link.sectionId, true); closeMobile() }}
               className="text-white text-brand-nav-link font-brand-nav-link py-2.5 border-b border-white/10 text-left bg-transparent border-l-0 border-r-0 border-t-0 w-full"
             >
               {link.label}
@@ -187,7 +195,7 @@ export default function Navbar() {
             </Link>
           ))}
           <button
-            onClick={() => { scrollToSection('contact'); closeMobile() }}
+            onClick={() => { scrollToSection('contact', true); closeMobile() }}
             className="sm:hidden contact-btn mt-3 text-center text-brand-button font-brand-button px-4 py-2 bg-white text-brand-purple rounded-full hover:bg-gray-100 transition-colors border-0"
           >
             {t.nav.contact}

@@ -49,7 +49,11 @@ export default function Footer() {
       {/* Main body */}
       <div className="max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20 py-12 flex flex-col sm:flex-row gap-10 justify-between">
         <div className="flex flex-col gap-5 max-w-sm">
-          <p className="text-white text-brand-logo font-antique font-brand-logo tracking-tight">{t.nav.logo}</p>
+          <img 
+            src="/assets/icons/logo.png" 
+            alt={t.nav.logo} 
+            className="h-8 sm:h-10 w-auto object-contain brightness-0 invert"
+          />
           <p className="text-white/65 font-montserrat text-sm leading-relaxed">{t.footer.brandDescription}</p>
           <div className="flex flex-wrap gap-2 mt-1">
             {socials.map((s) => (

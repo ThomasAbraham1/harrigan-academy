@@ -4,7 +4,7 @@ export default function ContactSection() {
   const { t } = useI18n()
 
   return (
-    <section id="contact" className="relative w-full py-20 sm:py-28 overflow-hidden scroll-mt-20 sm:scroll-mt-24">
+    <section id="contact" className="relative w-full py-20 sm:py-28 overflow-hidden scroll-mt-24 sm:scroll-mt-32">
       {/* World map background */}
       <div
         className="absolute inset-0"

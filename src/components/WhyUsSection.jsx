@@ -35,7 +35,7 @@ export default function WhyUsSection() {
   const { t } = useI18n()
 
   return (
-    <section id="why-us" className="relative w-full py-16 sm:py-24 bg-white overflow-hidden scroll-mt-20 sm:scroll-mt-24">
+    <section id="why-us" className="relative w-full py-16 sm:py-24 bg-white overflow-hidden scroll-mt-24 sm:scroll-mt-32">
       <div className="max-w-[1340px] mx-auto w-full px-6 sm:px-12 lg:px-20 relative z-10">
 
         {/* Decorative icons */}

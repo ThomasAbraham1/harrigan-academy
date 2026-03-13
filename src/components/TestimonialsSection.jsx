@@ -58,7 +58,7 @@ export default function TestimonialsSection() {
   const group = groups[current] || { type: 'single', items: [] }
 
   return (
-    <section id="testimonials" className="relative w-full py-10 sm:py-20 overflow-hidden scroll-mt-20 sm:scroll-mt-24" style={{ backgroundColor: '#DCF0ED' }}>
+    <section id="testimonials" className="relative w-full py-10 sm:py-20 overflow-hidden scroll-mt-24 sm:scroll-mt-32" style={{ backgroundColor: '#DCF0ED' }}>
       {/* Decorative circles — box-shadow instead of filter:blur for performance */}
       <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full opacity-30" style={{ backgroundColor: '#904ba2', boxShadow: '0 0 80px 40px #904ba2' }} />
       <div className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full opacity-30" style={{ backgroundColor: '#904ba2', boxShadow: '0 0 80px 40px #904ba2' }} />

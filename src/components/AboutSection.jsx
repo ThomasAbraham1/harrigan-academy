@@ -88,7 +88,7 @@ export default function AboutSection() {
   })
 
   return (
-    <section id="about" className="relative w-full py-10 sm:py-20 bg-white overflow-hidden scroll-mt-20 sm:scroll-mt-24">
+    <section id="about" className="relative w-full py-10 sm:py-20 bg-white overflow-hidden scroll-mt-24 sm:scroll-mt-32">
       {/* Pre-decode all images */}
       <div className="hidden" aria-hidden="true">
         {slideConfig.map((s, i) => (
