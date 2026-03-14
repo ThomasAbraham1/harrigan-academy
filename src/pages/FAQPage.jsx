@@ -14,7 +14,7 @@ function FAQItem({ q, a }) {
         onClick={() => setOpen(!open)}
         aria-expanded={open}
       >
-        <span className="text-section-p-large font-montserrat font-bold text-gray-900 group-hover:text-brand-purple transition-colors">
+        <span className="text-section-p-large font-montserrat font-section-p text-gray-900 group-hover:text-brand-purple transition-colors">
           {q}
         </span>
         <span
@@ -52,8 +52,7 @@ export default function FAQPage() {
 
       {/* Header banner */}
       <div
-        className="relative overflow-hidden py-20 sm:py-28 px-6 text-center"
-        style={{ backgroundColor: '#904ba2' }}
+        className="relative overflow-hidden py-20 sm:py-28 px-6 text-center bg-brand-mint"
       >
         <svg
           className="absolute bottom-[-1px] left-0 w-full"
@@ -64,20 +63,20 @@ export default function FAQPage() {
           <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" />
         </svg>
         <div className="relative z-10 max-w-3xl mx-auto">
-          <p className="text-white text-sm font-montserrat font-bold uppercase tracking-widest mb-3">
+          <p className="text-brand-purple text-sm font-montserrat font-bold uppercase tracking-widest mb-3">
             {t.nav.faq}
           </p>
-          <h1 className="text-hero-h font-antique font-hero-h text-white leading-tight mb-4">
+          <h1 className="text-hero-h font-antique font-hero-h text-brand-purple leading-tight mb-4">
             {t.faqPage?.title || 'Frequently Asked Questions'}
           </h1>
-          <p className="text-white/80 font-montserrat font-hero-p text-hero-p max-w-xl mx-auto">
+          <p className="text-gray-900/80 font-montserrat font-hero-p text-hero-p max-w-xl mx-auto">
             {t.faqPage?.subtitle || "Everything you need to know about Harrigan Academy. Can't find your answer? Contact us directly."}
           </p>
         </div>
       </div>
 
       {/* FAQ Accordion */}
-      <section className="py-16 sm:py-24 w-full flex-grow bg-gray-50">
+      <section className="py-16 sm:py-24 w-full flex-grow">
         <div className="max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20">
           <div className="max-w-3xl mx-auto w-full">
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">

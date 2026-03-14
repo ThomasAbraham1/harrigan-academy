@@ -136,7 +136,7 @@ export default function HeroSection() {
           <div
             key={current}
             className={`
-              w-full sm:w-[85%] md:w-1/2 lg:w-1/2 mb-8
+              w-full sm:w-[85%] md:w-1/2 lg:w-[40%] mb-8
               flex flex-col items-start gap-3 sm:gap-4 lg:gap-6
               text-left sm:text-left
               animate-[fade-in-up_0.6s_ease-out]

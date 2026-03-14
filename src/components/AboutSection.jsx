@@ -137,10 +137,10 @@ export default function AboutSection() {
                 className="flex-1 px-6 py-8 sm:px-10 sm:py-10 md:px-12 md:py-14 flex flex-col justify-center gap-3"
                 style={{ opacity: visible ? 1 : 0, transition: `opacity ${FADE_MS}ms ease`, willChange: 'opacity' }}
               >
-                <h3 className="text-2xl sm:text-2xl md:text-section-h font-antique font-section-h leading-tight mb-2" style={{ color: slide.titleColor }}>
+                <h3 className="text-section-h sm:text-2xl md:text-section-p-large font-antique font-section-p leading-tight mb-2" style={{ color: slide.titleColor }}>
                   {slideText.title}
                 </h3>
-                <p className="text-base sm:text-base md:text-section-p-large font-montserrat font-section-p-large leading-relaxed" style={{ color: slide.textColor }}>
+                <p className="text-base sm:text-base md:text-section-p font-montserrat font-section-p leading-relaxed" style={{ color: slide.textColor }}>
                   {slideText.body}
                 </p>
               </div>

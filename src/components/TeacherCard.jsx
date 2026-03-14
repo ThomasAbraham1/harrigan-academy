@@ -19,18 +19,18 @@ export default function TeacherCard({ name, role, bio, image, featured = false }
         </div>
 
         {/* Content */}
-          <div className="flex-1 p-8 md:p-12 flex flex-col justify-center gap-4 text-white">
-            <h2 className="text-section-h font-antique font-section-h leading-tight">{name}</h2>
-            <p className="text-brand-mint text-sm font-montserrat font-bold uppercase tracking-widest">{role}</p>
-            <p className="text-white/85 text-section-p-large font-montserrat font-section-p-large leading-relaxed whitespace-pre-line">{bio}</p>
-          </div>
+        <div className="flex-1 p-8 md:p-12 flex flex-col justify-center gap-4 text-white">
+          <h2 className="text-section-h font-antique font-section-h leading-tight">{name}</h2>
+          <p className="text-brand-mint text-section-p font-montserrat font-bold uppercase tracking-widest">{role}</p>
+          <p className="text-white/85 text-section-p font-montserrat font-section-p leading-relaxed whitespace-pre-line">{bio}</p>
+        </div>
       </div>
     )
   }
 
   return (
     <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col border border-gray-100">
-      {/* Photo */} 
+      {/* Photo */}
       <div className="w-full aspect-[4/3] bg-[#f9f3fa] overflow-hidden relative">
         <img
           src={image}
@@ -42,8 +42,8 @@ export default function TeacherCard({ name, role, bio, image, featured = false }
 
       {/* Content */}
       <div className="p-6 flex flex-col flex-grow">
-        <h3 className="text-brand-logo font-montserrat font-bold text-gray-900 mb-1">{name}</h3>
-        <p className="text-xs font-montserrat font-bold uppercase tracking-widest mb-3 text-brand-purple">{role}</p>
+        <h3 className="text-section-h font-montserrat font-section-p-large text-brand-purple mb-1">{name}</h3>
+        <p className="text-section-p font-montserrat font-bold uppercase tracking-widest mb-3 text-brand-purple">{role}</p>
         <p className="text-section-p font-montserrat text-gray-600 leading-relaxed flex-grow whitespace-pre-line">{bio}</p>
       </div>
     </div>

@@ -19,8 +19,7 @@ export default function TeachersPage() {
 
       {/* Page hero banner */}
       <div
-        className="relative overflow-hidden py-20 sm:py-28 px-6 text-center"
-        style={{ backgroundColor: '#904ba2' }}
+        className="relative overflow-hidden py-20 sm:py-28 px-6 text-center bg-brand-mint"
       >
         {/* Decorative wavy bottom edge */}
         <svg
@@ -32,10 +31,10 @@ export default function TeachersPage() {
           <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" />
         </svg>
         <div className="relative z-10 max-w-3xl mx-auto">
-          <p className="text-white text-sm font-montserrat font-bold uppercase tracking-widest mb-3">
-            {activeLang === 'en' ? 'Our Teachers' : t.nav.teachers}
+          <p className="text-brand-purple text-sm font-montserrat font-bold uppercase tracking-widest mb-3">
+            {t.nav.logo}
           </p>
-          <h1 className="text-hero-h font-antique font-hero-h text-white leading-tight">
+          <h1 className="text-hero-h font-antique font-hero-h text-brand-purple leading-tight">
             {activeLang === 'en' ? 'Our Teachers' : t.nav.teachers}
           </h1>
         </div>
