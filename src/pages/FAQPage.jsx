@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useI18n } from '../i18n/index.jsx'
 import PageWrapper from '../components/PageWrapper'
+import { useScrollToSection } from '../hooks/useScrollToSection.js'
 
 function FAQItem({ q, a }) {
   const [open, setOpen] = useState(false)
@@ -41,6 +42,7 @@ export default function FAQPage() {
   const { t } = useI18n()
   const { lang } = useParams()
   const activeLang = lang || 'en'
+  const scrollToSection = useScrollToSection()
 
   // Safety check for localized content
   const faqs = t.faqPage?.items || []
@@ -96,13 +98,12 @@ export default function FAQPage() {
                     activeLang === 'zh' ? '我们很乐意提供帮助。联系我们，我们会尽快给您回复。' :
                       'お気軽にお問い合わせください。できるだけ早く返信いたします。'}
               </p>
-              <Link
-                to={`/${activeLang}/`}
-                onClick={() => setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100)}
-                className="inline-flex items-center px-8 py-3 rounded-full bg-brand-purple text-white font-montserrat font-hero-cta text-hero-cta hover:bg-brand-purple-dark hover:scale-105 transition-all duration-300"
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="inline-flex items-center px-8 py-3 rounded-full bg-brand-purple text-white font-montserrat font-hero-cta text-hero-cta hover:bg-brand-purple-dark hover:scale-105 transition-all duration-300 border-0 cursor-pointer"
               >
                 {t.nav.contact}
-              </Link>
+              </button>
             </div>
           </div>
         </div>
