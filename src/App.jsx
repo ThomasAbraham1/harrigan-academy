@@ -25,7 +25,28 @@ function LangLayout() {
         
         <main className="flex-grow">
           {/* AnimatePresence for smooth route transitions */}
-          <AnimatePresence mode="wait">
+          <AnimatePresence 
+            mode="wait"
+            onExitComplete={() => {
+              // 1. Check if the URL we just navigated to has a #hash (e.g., #contact)
+              const hash = window.location.hash;
+
+              if (hash) {
+                // 2. If it DOES have a hash, wait a tiny fraction of a second 
+                // for Framer Motion to actually render the new page into the DOM
+                setTimeout(() => {
+                  const element = document.querySelector(hash);
+                  if (element) {
+                    // Scroll smoothly to the specific section
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }, 100); 
+              } else {
+                // 3. If it's a normal page link (no hash), just snap to the top
+                window.scrollTo({ top: 0 });
+              }
+            }}
+          >
             <Routes location={location} key={location.pathname}>
               <Route path="/"         element={<HomePage />} />
               <Route path="/teachers" element={<TeachersPage />} />
