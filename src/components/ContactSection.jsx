@@ -54,13 +54,23 @@ export default function ContactSection() {
           {/* Right Column: World Map Visual (16:9 ratio) */}
           <div className="flex-grow w-full">
             <div className="relative w-full h-full aspect-video rounded-3xl overflow-hidden border-2 border-brand-purple/20 flex items-center justify-center bg-white">
-              <img 
-                src="/assets/images/contact-bg.webp" 
-                alt="Our Worldwide Community" 
-                className="w-full h-full object-cover"
-                style={{ objectPosition: '180% center', scale: '1.6' }}
-                loading="lazy"
-              />
+             <img 
+  src="/assets/images/contact-bg.webp" 
+  alt="Our Worldwide Community" 
+  loading="lazy"
+  className="
+    w-full h-full object-cover origin-center
+    
+    /* 📱 MOBILE: Rely on scale and translate to crop/shift */
+    scale-[2.1] translate-x-[-30%] translate-y-[10%]
+    
+    /* 💊 TABLET */
+    md:scale-[2.1] md:translate-x-[-35%] md:translate-y-[10%]
+    
+    /* 💻 DESKTOP */
+    lg:scale-[1.6] lg:translate-x-[-25%] lg:translate-y-[0%]
+  "
+/>
               {/* Subtle overlay to soften the map slightly to blend with white bg, if needed */}
               <div className="absolute inset-0 bg-brand-purple/10 pointer-events-none" />
             </div>
