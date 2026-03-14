@@ -42,8 +42,16 @@ export default function Navbar() {
       <div className="max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20">
         <div className="flex items-center justify-between h-20 sm:h-22">
 
-          {/* Logo — goes home */}
-          <Link to={`/${activeLang}/`} className="flex-shrink-0">
+          {/* Logo — goes home. Scroll to top if already home. */}
+          <Link 
+            to={`/${activeLang}/`} 
+            className="flex-shrink-0"
+            onClick={(e) => {
+              if (window.location.pathname === `/${activeLang}/` || window.location.pathname === `/${activeLang}`) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
+          >
             <img 
               src="/assets/icons/logo.png" 
               alt={t.nav.logo} 
