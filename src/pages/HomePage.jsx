@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import PageWrapper from '../components/PageWrapper'
 import HeroSection from '../components/HeroSection'
 import FeaturesBar from '../components/FeaturesBar'
 import WhyUsSection from '../components/WhyUsSection'
@@ -33,8 +34,7 @@ export default function HomePage() {
   }, [location.state])
 
   return (
-    <div className="min-h-[100dvh]">
-      <Navbar />
+    <PageWrapper>
       <div>
         <HeroSection />
         <FeaturesBar />
@@ -44,7 +44,6 @@ export default function HomePage() {
       <AboutSection />
       <TestimonialsSection />
       <ContactSection />
-      <Footer />
-    </div>
+    </PageWrapper>
   )
 }

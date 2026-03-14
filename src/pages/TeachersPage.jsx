@@ -1,8 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { useI18n } from '../i18n/index.jsx'
 import TeacherCard from '../components/TeacherCard'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import PageWrapper from '../components/PageWrapper'
 
 export default function TeachersPage() {
   const { t } = useI18n()
@@ -14,9 +13,7 @@ export default function TeachersPage() {
   const rest       = teachers.filter(item => !item.featured)
 
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
-
+    <PageWrapper>
       {/* Page hero banner */}
       <div
         className="relative overflow-hidden py-20 sm:py-28 px-6 text-center bg-brand-mint"
@@ -69,27 +66,6 @@ export default function TeachersPage() {
           </div>
         </div>
       </section>
-
-      {/* CTA */}
-      {/* <section className="py-16 px-6 bg-gray-50 border-t border-gray-100 text-center">
-        <div className="max-w-xl mx-auto">
-          <h2 className="text-section-h font-antique font-section-h text-brand-purple mb-4">
-            Ready to find your perfect teacher?
-          </h2>
-          <p className="text-section-p text-gray-600 font-montserrat font-section-p mb-8">
-            Book a free trial lesson and see which teaching style fits you best.
-          </p>
-          <Link
-            to={`/${activeLang}/`}
-            onClick={() => setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100)}
-            className="inline-flex items-center px-8 py-4 rounded-full bg-brand-purple text-white font-montserrat font-hero-cta text-hero-cta hover:bg-brand-purple-dark hover:scale-105 transition-all duration-300"
-          >
-            Book a Free Trial
-          </Link>
-        </div>
-      </section> */}
-
-      <Footer />
-    </div>
+    </PageWrapper>
   )
 }

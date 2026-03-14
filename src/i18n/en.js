@@ -184,7 +184,13 @@ const en = {
         bio: 'Keiko Harrigan has more than 15 years of experience teaching students of different ages and backgrounds. Her lessons focus on building strong language foundations while helping students feel comfortable expressing themselves in English.\n\nShe believes that consistent encouragement and structured practice help students grow in both confidence and communication skills.',
         image: '/assets/images/teachers/keiko.webp',
       },
-
+      {
+        id: 'elizabeth',
+        name: 'Elizabeth Crawford',
+        role: '',
+        bio: 'Elizabeth Crawford has over 25 years of experience teaching languages to children, teenagers, and adults. Her teaching style focuses on creating an engaging and supportive learning environment where students feel comfortable practicing and improving their English.\n\nShe enjoys helping learners connect language with culture, making lessons both meaningful and memorable.',
+        image: '/assets/images/teachers/elizabeth.webp',
+      },
       {
         id: 'naomi',
         name: 'Naomi Aoki',
@@ -196,8 +202,15 @@ const en = {
         id: 'ema',
         name: 'Ema Ito',
         role: '',
-        bio: 'Ema Ito focuses on helping students strengthen their English through structured learning and clear communication practice. She supports learners in developing confidence while improving both written and spoken English.\n\nSpecializations:\nEssay Writing\nGrammar\nTOEIC Preparation\nIELTS Preparation',
+        bio: 'Ema Ito focuses on helping students strengthen their English through structured learning and clear communication practice. She supports learners in developing confidence while improving both written and spoken English.\n\nSpecializations:\nEssay Writing, Grammar, TOEIC Preparation, IELTS Preparation',
         image: '/assets/images/teachers/ema.webp',
+      },
+      {
+        id: 'hiromi',
+        name: 'Hiromi',
+        role: '',
+        bio: 'Hiromi believes that education has the power to open doors and create new opportunities for students. Her teaching approach focuses on helping learners discover their potential while developing the confidence to use English in real-life situations. \n\nShe encourages students to stay curious, motivated, and open to learning new skills.',
+        image: '/assets/images/teachers/hiromi.webp',
       },
       {
         id: 'lucy',

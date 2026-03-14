@@ -173,7 +173,13 @@ const zh = {
         bio: '惠子·哈里根拥有超过15年的教学经验，教授过不同年龄和背景的学生。她的课程注重建立扎实的语言基础，同时帮助学生在用英语表达自己时感到更加自信和自然。\n\n她相信，持续的鼓励和系统化的练习能够帮助学生在自信心和沟通能力方面不断成长。',
         image: '/assets/images/teachers/keiko.webp',
       },
-
+      {
+        id: 'elizabeth',
+        name: 'Elizabeth Crawford',
+        role: '',
+        bio: '伊丽莎白·克劳福德拥有超过25年教授儿童、青少年和成人的教学经验。她的教学风格注重营造一个吸引人的、支持性的学习环境，让学生在练习和提高英语时感到自在。\n\n她乐于帮助学习者将语言与文化联系起来，使课程既有意义又令人难忘。',
+        image: '/assets/images/teachers/elizabeth.webp',
+      },
       {
         id: 'naomi',
         name: 'Naomi Aoki',
@@ -181,13 +187,19 @@ const zh = {
         bio: '青木直美拥有多年向不同文化背景学生教授英语的经验。她乐于帮助学生提升语言能力，同时建立自信，从而能够更加有效地进行交流。\n\n她的课堂注重鼓励与实践，并营造一个让学生能够轻松发展口语能力的学习环境。',
         image: '/assets/images/teachers/naomi.webp',
       },
-
       {
         id: 'ema',
         name: 'Ema Ito',
-        role: '',
+        role: '日本 | 英语讲师',
         bio: '伊藤绘麻专注于通过系统化学习和清晰的沟通练习，帮助学生提升英语能力。她在提高学生书面和口语英语水平的同时，也帮助他们建立自信。\n\n专长领域：\n论文写作\n语法\nTOEIC考试准备\nIELTS考试准备',
         image: '/assets/images/teachers/ema.webp',
+      },
+      {
+        id: 'hiromi',
+        name: 'Hiromi',
+        role: '',
+        bio: 'Hiromi 相信教育有能力为学生打开大门并创造新的机遇。她的教学方法侧重于帮助学习者发现潜力的同时，培养在现实生活中使用英语的自信。\n\n她鼓励学生保持好奇心、积极性和开放的心态，不断学习新技能。',
+        image: '/assets/images/teachers/hiromi.webp',
       },
       {
         id: 'lucy',
@@ -199,7 +211,7 @@ const zh = {
       {
         id: 'abe',
         name: 'Abe',
-        role: '',
+        role: '日本 | 英语讲师',
         bio: 'Abe 喜欢在轻松和鼓励的学习环境中帮助学生提高英语水平。他的课程通过对话练习和互动活动来建立学生的自信。\n\n他相信，当学生在表达时感到轻松，并把错误看作学习过程的一部分时，学习效果会最好。',
         image: '/assets/images/teachers/abe.webp',
       },

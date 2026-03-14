@@ -1,6 +1,6 @@
 # push-github.ps1
 # Stages all changes, prompts for a commit message, and pushes to GitHub.
-# Usage: .\scripts\push-github.ps1
+# Usage: .\scripts\push-github.ps1 "Your commit message"
 
 # Check if git is installed
 if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
@@ -26,7 +26,6 @@ if ($LASTEXITCODE -ne 0) {
 $status = git status --short
 if (-not $status) {
     # Still check if we have commits to push
-    # Quote "@{u}" to avoid PowerShell interpretation as a hash table
     $ahead = git rev-list --count "@{u}..HEAD" 2>$null
     if ($LASTEXITCODE -eq 0 -and $ahead -gt 0) {
         Write-Host "[i] Working tree clean, but you have $ahead commit(s) ahead of remote." -ForegroundColor Yellow
@@ -49,7 +48,11 @@ Write-Host "[*] Changes detected on branch [$branch]:" -ForegroundColor Cyan
 git status --short
 
 Write-Host ""
-$msg = Read-Host "Enter commit message (or press enter to abort)"
+# Get commit message from argument OR prompt
+$msg = $args[0]
+if (-not $msg) {
+    $msg = Read-Host "Enter commit message (or press enter to abort)"
+}
 
 if (-not $msg -or -not $msg.Trim()) {
     Write-Host "[!] No commit message provided. Aborting." -ForegroundColor Yellow

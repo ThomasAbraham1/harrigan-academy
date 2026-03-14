@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useI18n } from '../i18n/index.jsx'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import PageWrapper from '../components/PageWrapper'
 
 function FAQItem({ q, a }) {
   const [open, setOpen] = useState(false)
@@ -47,9 +46,7 @@ export default function FAQPage() {
   const faqs = t.faqPage?.items || []
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
-      <Navbar />
-
+    <PageWrapper>
       {/* Header banner */}
       <div
         className="relative overflow-hidden py-20 sm:py-28 px-6 text-center bg-brand-mint"
@@ -110,8 +107,6 @@ export default function FAQPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
-    </div>
+    </PageWrapper>
   )
 }

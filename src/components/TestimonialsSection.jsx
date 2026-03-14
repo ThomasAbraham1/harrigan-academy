@@ -66,7 +66,7 @@ export default function TestimonialsSection() {
       <div className="relative max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20">
         <div className="text-center mb-10 sm:mb-14">
           <p className="text-sm font-montserrat font-semibold uppercase tracking-widest text-[#904ba2] mb-3">{t.testimonials.eyebrow}</p>
-          <h2 className="font-antique font-light text-[1.875rem] leading-tight" style={{ color: '#904ba2' }}>
+          <h2 className="font-antique font-section-h text-[1.875rem] leading-tight" style={{ color: '#904ba2' }}>
             {t.testimonials.sectionTitle}
           </h2>
         </div>

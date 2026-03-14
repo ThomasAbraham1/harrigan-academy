@@ -39,7 +39,7 @@ export default {
         'brand-logo': '700',
         'hero-h': '700',
         'hero-p': '500',
-        'section-h': '500',
+        'section-h': '600',
         'section-p': '400',
         'section-p-large': '500',
         'hero-cta': '600',
