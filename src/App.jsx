@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Routes, Route, Navigate, useParams, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { I18nProvider } from './i18n/index.jsx'
@@ -25,28 +26,7 @@ function LangLayout() {
         
         <main className="flex-grow">
           {/* AnimatePresence for smooth route transitions */}
-          <AnimatePresence 
-            mode="wait"
-            onExitComplete={() => {
-              // 1. Check if the URL we just navigated to has a #hash (e.g., #contact)
-              const hash = window.location.hash;
-
-              if (hash) {
-                // 2. If it DOES have a hash, wait a tiny fraction of a second 
-                // for Framer Motion to actually render the new page into the DOM
-                setTimeout(() => {
-                  const element = document.querySelector(hash);
-                  if (element) {
-                    // Scroll smoothly to the specific section
-                    element.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }, 100); 
-              } else {
-                // 3. If it's a normal page link (no hash), just snap to the top
-                window.scrollTo({ top: 0 });
-              }
-            }}
-          >
+          <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
               <Route path="/"         element={<HomePage />} />
               <Route path="/teachers" element={<TeachersPage />} />
@@ -63,12 +43,25 @@ function LangLayout() {
   )
 }
 
+// ScrollToTop component to reset scroll position on route change
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return null
+}
+
 function App() {
   const location = useLocation()
   const lang = location.pathname.split('/')[1] || 'en'
 
   return (
-    <Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
       {/* Root redirect → /en/ */}
       <Route path="/" element={<Navigate to="/en/" replace />} />
 
@@ -78,6 +71,7 @@ function App() {
       {/* Catch-all */}
       <Route path="*" element={<Navigate to="/en/" replace />} />
     </Routes>
+  </>
   )
 }
 

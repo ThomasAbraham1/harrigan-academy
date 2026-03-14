@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useLocation } from 'react-router-dom'
 import { useI18n } from '../i18n/index.jsx'
 import { useScrollToSection } from '../hooks/useScrollToSection.js'
 
@@ -13,6 +13,7 @@ const socials = [
 export default function Footer() {
   const { t } = useI18n()
   const { lang = 'en' } = useParams()
+  const location = useLocation()
   const scrollToSection = useScrollToSection()
 
   const scrollLinks = [
@@ -25,6 +26,12 @@ export default function Footer() {
     { label: t.footer.links.teachers, to: `/${lang}/teachers` },
     { label: t.footer.links.faq, to: `/${lang}/faq` },
   ]
+
+  const handleLogoClick = () => {
+    if (location.pathname === `/${lang}/` || location.pathname === `/${lang}`) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
 
   return (
     <footer style={{ backgroundColor: '#904ba2' }}>
@@ -56,11 +63,17 @@ export default function Footer() {
       {/* Main body */}
       <div className="max-w-[1440px] mx-auto w-full px-6 sm:px-12 lg:px-20 py-12 flex flex-col sm:flex-row gap-10 justify-between">
         <div className="flex flex-col gap-5 max-w-sm items-start">
-          <img
-            src="/assets/icons/logo.png"
-            alt={t.nav.logo}
-            className="h-16 sm:h-20 w-auto object-contain brightness-0 invert"
-          />
+          <Link 
+            to={`/${lang}/`} 
+            onClick={handleLogoClick}
+            className="transition-transform hover:scale-105 duration-300"
+          >
+            <img
+              src="/assets/icons/logo.png"
+              alt={t.nav.logo}
+              className="h-16 sm:h-20 w-auto object-contain brightness-0 invert"
+            />
+          </Link>
           <p className="text-white/65 font-montserrat text-sm leading-relaxed">{t.footer.brandDescription}</p>
           <div className="flex flex-wrap gap-2 mt-1">
             {socials.map((s) => (
